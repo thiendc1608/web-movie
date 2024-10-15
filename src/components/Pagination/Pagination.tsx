@@ -77,7 +77,7 @@ const Pagination = ({ totalCount, siblingCount = 1, currentPage, pageSize, setPa
         <ChevronRight />
       </li>
       <li
-        onClick={() => setPageCurrent(currentPage + 1)}
+        onClick={() => setPageCurrent(+lastPage)}
         className={cn(
           'w-[32px] h-[32px] flex items-center justify-center mx-[3px]',
           currentPage === lastPage ? 'opacity-30 pointer-events-none cursor-default' : ''

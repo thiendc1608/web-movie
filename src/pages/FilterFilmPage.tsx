@@ -30,9 +30,15 @@ const FilterFilmPage = () => {
   const [pageCurrent, setPageCurrent] = useState(1)
   const [searchParams] = useSearchParams()
 
+  const filterFilmEl = document.getElementById('filter-film-scroll')
+
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [pathname, searchParams])
+    filterFilmEl?.scrollIntoView({
+      inline: 'start',
+      block: 'start',
+      behavior: 'smooth',
+    })
+  }, [pathname, pageCurrent, searchParams])
 
   useEffect(() => {
     const queries = Object.fromEntries(searchParams)
@@ -44,7 +50,7 @@ const FilterFilmPage = () => {
   }, [pageCurrent])
 
   return (
-    <div>
+    <div id="filter-film-scroll">
       {homeData?.data && <FilterFilm isNotShowSeeAll={false} data={homeData?.data} isLoading={isLoading} />}
       <div className="bg-[#151d25] border-t border-t-[#1e2732] custom-page lg:flex shadow-lg relative">
         <div className="lg:mr-5 mb-5 lg:w-3/4">

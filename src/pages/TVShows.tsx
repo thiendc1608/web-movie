@@ -16,9 +16,15 @@ const TVShows = () => {
   const [pageCurrent, setPageCurrent] = useState(1)
   const [searchParams] = useSearchParams()
 
+  const tvShowsEl = document.getElementById('tv-shows-scroll')
+
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [pathname])
+    tvShowsEl?.scrollIntoView({
+      inline: 'start',
+      block: 'start',
+      behavior: 'smooth',
+    })
+  }, [pathname, pageCurrent, searchParams])
 
   useEffect(() => {
     const queries = Object.fromEntries(searchParams)
@@ -30,7 +36,7 @@ const TVShows = () => {
   }, [pageCurrent])
 
   return (
-    <>
+    <div id="tv-shows-scroll">
       {homeData?.data && <FilterFilm isNotShowSeeAll={false} data={homeData?.data} isLoading={isLoading} />}
       <div className="bg-[#151d25] border-t border-t-[#1e2732] custom-page lg:flex shadow-lg min-h-screen relative">
         <div className="lg:mr-5 mb-5 lg:w-3/4">
@@ -63,7 +69,7 @@ const TVShows = () => {
           />
         )}
       </div>
-    </>
+    </div>
   )
 }
 
