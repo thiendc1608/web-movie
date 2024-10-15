@@ -24,6 +24,7 @@ const ShowImageFilm = ({ data, isLoading }: ShowImageFilmProps) => {
   if (isLoading) {
     return <Skeleton width={272.09} height={372.86} />
   }
+  console.log(data)
 
   return (
     <div className="bg-blue-800 relative justify-between min-[425px]:ml-[4px] min-[425px]:mr-[43px] md:mx-0  rounded-lg h-full w-full">
@@ -62,13 +63,23 @@ const ShowImageFilm = ({ data, isLoading }: ShowImageFilmProps) => {
           </button>
           {isClickTrailer && (
             <div
-              className="fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-70 tw-flex-center z-50"
+              className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-70 tw-flex-center z-50"
               onClick={() => setIsClickTrailer(false)}
             >
               <div className="rounded-md bg-white shadow-lg absolute top-10 right-10 cursor-pointer">
                 <X size={50} color="red" />
               </div>
-              <ReactPlayer url={data?.trailer_url} width={640} height={360} controls={true} />
+              {data?.trailer_url ? (
+                <ReactPlayer url={data?.trailer_url} width={640} height={360} controls={true} />
+              ) : (
+                <div
+                  className="text-yellow-500 max-w-[500px] h-[200px] bg-slate-600 rounded-md text-xl flex flex-col items-center justify-center p-4 select-none"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <span>Trailer của phim hiện đang chờ cập nhật. </span>
+                  <span>Xin quý khách ghé lại sau</span>
+                </div>
+              )}
             </div>
           )}
           <button

@@ -28,7 +28,6 @@ const Search = () => {
       })
     }
   }, [searchQuery])
-  console.log(searchResults)
 
   return (
     <div className="flex sm:w-[300px] md:w-[350px] search-container">

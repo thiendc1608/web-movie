@@ -23,6 +23,7 @@ const FilterFilmPage = () => {
     queryString.year,
     queryString.sort_field
   )
+  console.log('listFilm', listFilm)
 
   const { listMovie, listCategory, listCountry, listYear } = useFilterStatus()
   const { pathname } = useLocation()
