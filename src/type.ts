@@ -58,7 +58,7 @@ export interface HomeListFilm {
   view?: string
   year: string
   _id: string
-  tmdb: voteFilm[]
+  tmdb: voteFilm
   type: string
 }
 

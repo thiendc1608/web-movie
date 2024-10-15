@@ -3,7 +3,7 @@ import { ListDataTypes } from '@/type'
 import TopViewItem from '../Home/TopView/TopViewItem'
 
 interface InfoSearchProps {
-  data: Partial<ListDataTypes>
+  data: ListDataTypes
   query: string
   isShowResult: boolean
   setIsShowResult: React.Dispatch<React.SetStateAction<boolean>>
@@ -32,7 +32,7 @@ const InfoSearch = ({ data, query, isShowResult, setIsShowResult }: InfoSearchPr
               <span className="text-[#d50ac1]"> {query}</span>
             </p>
           </div>
-          <TopViewItem data={data} countImageShow={data?.items.length} />
+          <TopViewItem data={data} countImageShow={data?.items?.length} />
         </ul>
       )}
     </>

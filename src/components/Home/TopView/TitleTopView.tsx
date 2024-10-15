@@ -34,9 +34,9 @@ const TitleTopView = ({ titleMovie }: TitleMovieProps) => {
   const { topViewData: monthData } = useGetTopViewData('year')
   const { setTopViewData } = useTopViewStore()
   useEffect(() => {
-    if (activeTab === 1) setTopViewData(dayData?.data)
-    if (activeTab === 2) setTopViewData(weekData?.data)
-    if (activeTab === 3) setTopViewData(monthData?.data)
+    if (activeTab === 1 && dayData?.data) setTopViewData(dayData?.data)
+    if (activeTab === 2 && weekData?.data) setTopViewData(weekData?.data)
+    if (activeTab === 3 && monthData?.data) setTopViewData(monthData?.data)
   }, [isLoading, activeTab])
 
   if (isLoading) {

@@ -176,7 +176,7 @@ const FilterFilm = ({ data, isNotShowSeeAll, isLoading }: FilterFilmProps) => {
                       </FormControl>
                       <SelectContent className="bg-[#555E68] text-white border-none">
                         <SelectItem value="Chọn tất cả">Chọn tất cả</SelectItem>
-                        {dataCountry.data.items?.map((item: Categories, idx: number) => (
+                        {dataCountry?.items?.map((item: CategoryAndCountry, idx: number) => (
                           <SelectItem key={idx} value={item.name}>
                             {item.name}
                           </SelectItem>

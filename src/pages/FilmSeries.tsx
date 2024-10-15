@@ -54,12 +54,14 @@ const FilmSeries = () => {
             <TopView countImageShow={10} />
           </div>
         </div>
-        <Pagination
-          totalCount={+filmSeries?.data.params.pagination.totalItems || 1}
-          currentPage={pageCurrent}
-          setPageCurrent={setPageCurrent}
-          pageSize={+filmSeries?.data.params.pagination.totalItemsPerPage || 1}
-        />
+        {filmSeries?.data && (
+          <Pagination
+            totalCount={+filmSeries?.data.params.pagination.totalItems || 1}
+            currentPage={pageCurrent}
+            setPageCurrent={setPageCurrent}
+            pageSize={+filmSeries?.data.params.pagination.totalItemsPerPage || 1}
+          />
+        )}
       </div>
     </>
   )

@@ -35,7 +35,6 @@ const FormRegister = () => {
           setSelectTab('Login')
           set(ref(db, 'users/' + user.uid), {
             email: user?.email,
-            accessToken: user?.accessToken,
           })
         }
 

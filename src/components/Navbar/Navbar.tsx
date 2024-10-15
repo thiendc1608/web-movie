@@ -62,7 +62,9 @@ const Navbar = () => {
                 <div className="absolute right-[8px] bottom-[15px]">
                   <ChevronDown size={20} />
                 </div>
-                {isShowCategory && <SubItem mainCategory={`/${path.THE_LOAI}`} data={categoryData?.data.items} />}
+                {isShowCategory && categoryData?.data && (
+                  <SubItem mainCategory={`/${path.THE_LOAI}`} data={categoryData?.data} />
+                )}
               </li>
             ) : (
               <>
@@ -82,7 +84,9 @@ const Navbar = () => {
                     <div className="absolute right-[8px] bottom-[15px]">
                       <ChevronDown size={20} />
                     </div>
-                    {isShowCountry && <SubItem mainCategory={`/${path.COUNTRY}`} data={countryData?.data.items} />}
+                    {isShowCountry && countryData?.data && (
+                      <SubItem mainCategory={`/${path.COUNTRY}`} data={countryData?.data} />
+                    )}
                   </li>
                 ) : (
                   <li

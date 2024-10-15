@@ -6,7 +6,7 @@ import { FormData, UserSchema } from '@/type'
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import { toast } from 'react-toastify'
 import { useShowModal } from '@/stores/useShowModal'
-import { UserStore, useUserStore } from '@/stores/useUserStore'
+import { useUserStore } from '@/stores/useUserStore'
 
 interface UseShowModalReturn {
   setIsShowModal: (isShowModal: boolean, contentModal: React.ReactNode) => void
@@ -14,7 +14,7 @@ interface UseShowModalReturn {
 
 const FormLogin = () => {
   const { setIsShowModal } = useShowModal() as UseShowModalReturn
-  const { setUser, setIsLogin, setToken } = useUserStore() as UserStore
+  const { setUser, setIsLogin } = useUserStore()
   const {
     register,
     handleSubmit,
@@ -41,7 +41,6 @@ const FormLogin = () => {
           setIsShowModal(false, null)
           setIsLogin(true)
           setUser(user.email.split('@')[0])
-          setToken(user?.accessToken)
         }
 
         // ...

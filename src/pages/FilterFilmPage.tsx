@@ -12,13 +12,6 @@ import { useGetHomeData } from '@/api/home-api'
 import Skeleton from 'react-loading-skeleton'
 import Pagination from '@/components/Pagination/Pagination'
 
-interface FilterStatus {
-  listMovie: string
-  listCategory: string
-  listCountry: string
-  listYear: string
-}
-
 const FilterFilmPage = () => {
   const { homeData, isLoading } = useGetHomeData()
   const queryString = useQueryString()
@@ -31,7 +24,7 @@ const FilterFilmPage = () => {
     queryString.sort_field
   )
 
-  const { listMovie, listCategory, listCountry, listYear } = useFilterStatus<FilterStatus>()
+  const { listMovie, listCategory, listCountry, listYear } = useFilterStatus()
   const { pathname } = useLocation()
   const navigate = useNavigate()
   const [pageCurrent, setPageCurrent] = useState(1)
@@ -52,7 +45,7 @@ const FilterFilmPage = () => {
 
   return (
     <div>
-      {homeData?.data && <FilterFilm isNotShowSeeAll={false} data={homeData?.data?.items} isLoading={isLoading} />}
+      {homeData?.data && <FilterFilm isNotShowSeeAll={false} data={homeData?.data} isLoading={isLoading} />}
       <div className="bg-[#151d25] border-t border-t-[#1e2732] custom-page lg:flex shadow-lg relative">
         <div className="lg:mr-5 mb-5 lg:w-3/4">
           <div className="mb-3 mt-3">

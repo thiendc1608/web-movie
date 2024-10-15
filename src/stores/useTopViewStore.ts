@@ -4,11 +4,11 @@ import { ListDataTypes } from '@/type'
 import { create } from 'zustand'
 
 interface TopViewStore {
-  topViewData: Partial<ListDataTypes>,
+  topViewData: ListDataTypes,
   setTopViewData: (data: ListDataTypes) => void,
 }
 
 export const useTopViewStore = create<TopViewStore>((set) => ({
-  topViewData: [],
+  topViewData: {},
   setTopViewData: (data: ListDataTypes) => set({ topViewData: data }),
-}))
+}));

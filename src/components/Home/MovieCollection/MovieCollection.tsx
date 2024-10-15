@@ -24,27 +24,33 @@ const MovieCollection = () => {
               isNotShowSeeAll={true}
             />
           )}
-          <MovieCollectionItem
-            titleMovie="Phim Lẻ"
-            data={movieData?.data}
-            countImageShow={12}
-            isLoading={isMovieData}
-            isNotShowSeeAll={true}
-          />
-          <MovieCollectionItem
-            titleMovie="TV SHOWS"
-            data={tvShowsData?.data}
-            countImageShow={12}
-            isLoading={isTVShowsData}
-            isNotShowSeeAll={true}
-          />
-          <MovieCollectionItem
-            titleMovie="Hoạt hình"
-            data={carToonData?.data}
-            countImageShow={12}
-            isLoading={isCarToonData}
-            isNotShowSeeAll={true}
-          />
+          {movieData?.data && (
+            <MovieCollectionItem
+              titleMovie="Phim Lẻ"
+              data={movieData?.data}
+              countImageShow={12}
+              isLoading={isMovieData}
+              isNotShowSeeAll={true}
+            />
+          )}
+          {tvShowsData?.data && (
+            <MovieCollectionItem
+              titleMovie="TV SHOWS"
+              data={tvShowsData?.data}
+              countImageShow={12}
+              isLoading={isTVShowsData}
+              isNotShowSeeAll={true}
+            />
+          )}
+          {carToonData?.data && (
+            <MovieCollectionItem
+              titleMovie="Hoạt hình"
+              data={carToonData?.data}
+              countImageShow={12}
+              isLoading={isCarToonData}
+              isNotShowSeeAll={true}
+            />
+          )}
         </div>
         <div className="w-full lg:w-1/3">
           <TopView countImageShow={filmSeries?.data?.items.length ?? 0} />

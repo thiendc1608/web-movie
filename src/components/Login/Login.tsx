@@ -12,7 +12,7 @@ import { useUserStore } from '@/stores/useUserStore'
 const Login = () => {
   const { selectTab, setSelectTab } = useSelectTab()
   const { setIsShowModal } = useShowModal()
-  const { setUser, setIsLogin, setToken } = useUserStore()
+  const { setUser, setIsLogin } = useUserStore()
 
   const FacebookAuthButtonClicked = async () => {
     const userInfo = await FacebookAuth()
@@ -21,7 +21,6 @@ const Login = () => {
       setIsShowModal(false, null)
       setIsLogin(true)
       setUser(userInfo?.user.displayName)
-      setToken(userInfo?.user.accessToken)
     }
   }
 

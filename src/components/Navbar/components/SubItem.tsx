@@ -1,4 +1,4 @@
-import { Categories } from '@/type'
+import { Categories, CategoryAndCountry } from '@/type'
 import { Link } from 'react-router-dom'
 
 interface SubItemProps {
@@ -9,7 +9,7 @@ const SubItem = ({ mainCategory, data }: SubItemProps) => {
   return (
     <div className="absolute top-full left-0 bg-[#1f3d58] shadow-custom py-2 rounded-lg w-96 z-50">
       <div className="grid grid-cols-3">
-        {data?.map((item) => (
+        {data?.items?.map((item: CategoryAndCountry) => (
           <div
             key={item._id}
             className="p-2 truncate cursor-pointer text-[#989898] hover:text-white hover:border-r-2 rounded-r-md border-[#3ddbf0]"

@@ -3,19 +3,13 @@ import { useEffect, useState, useTransition } from 'react'
 import { IoIosSearch } from 'react-icons/io'
 import '@/components/SearchFilm/SearchFilm.css'
 import { searchFilmApi } from '@/api/search-film'
-import { HomeListFilm } from '@/type'
+import { ListDataTypes } from '@/type'
 import InfoSearch from '../SearchFilm/InfoSearch'
-
-interface HomeListFilmResponse {
-  data: {
-    items: HomeListFilm[]
-  }
-}
 
 const Search = () => {
   const [, startTransition] = useTransition()
   const [query, setQuery] = useState('')
-  const [searchResults, setSearchResults] = useState<HomeListFilmResponse[]>()
+  const [searchResults, setSearchResults] = useState<ListDataTypes>()
   const searchQuery = useDebounce(query, 1000)
   const [isShowResult, setIsShowResult] = useState(false)
 
@@ -34,6 +28,7 @@ const Search = () => {
       })
     }
   }, [searchQuery])
+  console.log(searchResults)
 
   return (
     <div className="flex sm:w-[300px] md:w-[350px] search-container">
@@ -52,13 +47,8 @@ const Search = () => {
       <button className="hover:bg-black border-[1.5px] border-[#ff8a00] h-[38px] p-[5.5px] rounded-r-md">
         <IoIosSearch size={26} color="#ff8a00" />
       </button>
-      {searchResults?.[0]?.data && (
-        <InfoSearch
-          data={searchResults?.[0]?.data}
-          query={query}
-          isShowResult={isShowResult}
-          setIsShowResult={setIsShowResult}
-        />
+      {searchResults?.items && (
+        <InfoSearch data={searchResults} query={query} isShowResult={isShowResult} setIsShowResult={setIsShowResult} />
       )}
     </div>
   )
