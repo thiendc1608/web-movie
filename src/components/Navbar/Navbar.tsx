@@ -22,9 +22,9 @@ const Navbar = () => {
   const { setIsShowMenu } = useShowMenu()
 
   useEffect(() => {
-    if (categoryData) setDataCategory(categoryData)
-    if (countryData) setDataCountry(countryData)
-  }, [categoryData, countryData])
+    if (categoryData) setDataCategory(categoryData.data)
+    if (countryData) setDataCountry(countryData.data)
+  }, [isLoading, categoryData, countryData])
 
   if (isLoading) {
     return (

@@ -2,10 +2,10 @@ import { axiosClient } from './axios-client'
 import { toast } from 'react-toastify';
 import { useQuery } from '@tanstack/react-query';
 import { useQueryString } from '@/utils/utils';
-import { HomeListFilm } from '@/type';
+import { ListDataTypes } from '@/type';
 
 export const carToonApi = {
-  getCartoonApi: (page: number) => axiosClient.get<HomeListFilm[]>('/danh-sach/hoat-hinh', { params: { page } } ),
+  getCartoonApi: (page: number) => axiosClient.get<ListDataTypes>('/danh-sach/hoat-hinh', { params: { page } } ),
 }
 
 export const useGetCarToonData = () => {

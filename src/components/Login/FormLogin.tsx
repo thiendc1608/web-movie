@@ -34,9 +34,7 @@ const FormLogin = () => {
     signInWithEmailAndPassword(auth, data.email, data.password)
       .then((userCredential) => {
         // Signed in
-        console.log(userCredential)
         const user = userCredential.user
-        console.log(user)
 
         if (user.email) {
           toast.success('Login successfully')

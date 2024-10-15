@@ -15,15 +15,15 @@ interface MovieCollectionItemProps {
   titleMovie: string
   data: ListDataTypes
   isNotShowSeeAll: boolean
-  countImageShow?: number
   isLoading: boolean
+  countImageShow?: number
 }
 const MovieCollectionItem = ({
   titleMovie,
   data,
   isNotShowSeeAll,
-  countImageShow,
   isLoading,
+  countImageShow,
 }: MovieCollectionItemProps) => {
   const location = useLocation()
   if (isLoading) {
@@ -41,7 +41,7 @@ const MovieCollectionItem = ({
     <div>
       <TitleMovie titleMovie={titleMovie} isNotShowSeeAll={isNotShowSeeAll} />
       <div className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4 lg:mr-5 mb-5">
-        {data?.items.slice(0, countImageShow).map((item: HomeListFilm) => (
+        {data?.items?.slice(0, countImageShow).map((item: HomeListFilm) => (
           <FilmItem key={item._id} item={item} isNotShowSeeAll={isNotShowSeeAll} />
         ))}
       </div>

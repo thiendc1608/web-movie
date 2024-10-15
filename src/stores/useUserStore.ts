@@ -6,7 +6,7 @@ const getLocalStorage = (key: string) => {
   }
 const setLocalStorage = (key: string, value: string | boolean) => localStorage.setItem(key, JSON.stringify(value))
 
-export interface UserStore {
+type UserStore = {
   token: string
   currentUser: string
   isLogin: boolean
@@ -15,7 +15,7 @@ export interface UserStore {
   setToken: (token: string) => void
 }
 
-export const useUserStore = create((set) => ({
+export const useUserStore = create<UserStore>((set) => ({
   token: getLocalStorage('token') || '',
   currentUser: getLocalStorage('currentUser') || '',
   isLogin: getLocalStorage('isLogin') || false,

@@ -13,13 +13,13 @@ const DetailFilm = () => {
 
   return (
     <>
-      <FilterFilm isNotShowSeeAll={false} data={homeData?.data?.items} isLoading={isLoading} />
+      {homeData?.data && <FilterFilm isNotShowSeeAll={false} data={homeData?.data} isLoading={isLoading} />}
       <div className="bg-[#151d25] border-t border-t-[#1e2732] custom-page lg:flex shadow-lg">
         <div className="lg:mr-5 mb-5 lg:w-3/4">
           <div className="my-3">
-            <BreadcrumbFunction data={detailFilm?.data.breadCrumb} isLoading={isDetailFilm} />
+            {detailFilm?.data && <BreadcrumbFunction data={detailFilm?.data} isLoading={isDetailFilm} />}
           </div>
-          <DetailFilmItem data={detailFilm?.data.item} isLoading={isDetailFilm} />
+          {detailFilm?.data && <DetailFilmItem data={detailFilm?.data.item} isLoading={isDetailFilm} />}
         </div>
         <div className="lg:w-2/6">
           <div className="mb-5 mt-5 min-h-screen  cursor-pointer">

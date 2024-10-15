@@ -6,7 +6,7 @@ import { useShowModal } from '@/stores/useShowModal.ts'
 import { useUserStore } from '@/stores/useUserStore.ts'
 import { ChevronDown, Heart } from 'lucide-react'
 import { useState } from 'react'
-import { auth } from '../firebase/firebase.ts'
+import { auth } from '../../firebase/firebase.ts'
 import { signOut } from 'firebase/auth'
 import { toast } from 'react-toastify'
 

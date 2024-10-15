@@ -1,12 +1,11 @@
-import React from 'react'
-import { HomeListFilm } from '@/type'
+import { HomeListFilm, ListDataTypes } from '@/type'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import 'react-lazy-load-image-component/src/effects/blur.css'
 import { Link } from 'react-router-dom'
 
 interface TopViewItemProps {
   countImageShow: number
-  data: HomeListFilm[]
+  data: ListDataTypes
 }
 const TopViewItem = ({ countImageShow, data }: TopViewItemProps) => {
   const dataStored = localStorage.getItem('urlDomain')
@@ -14,7 +13,7 @@ const TopViewItem = ({ countImageShow, data }: TopViewItemProps) => {
 
   return (
     <>
-      {data?.slice(0, countImageShow).map((item: HomeListFilm) => (
+      {data?.items?.slice(0, countImageShow).map((item: HomeListFilm) => (
         <Link to={`/chi-tiet-phim/${item.slug}`} key={item._id}>
           <div
             className="rightbar-custom group flex items-center gap-4 p-3 rounded-md transition duration-300 ease-in-out 

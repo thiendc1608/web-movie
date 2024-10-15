@@ -56,9 +56,7 @@ const Sidebar = () => {
                     <div onClick={() => setExpandCategory(!expandCategory)}>
                       {expandCategory ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
                     </div>
-                    {expandCategory && (
-                      <SubItemSidebar mainCategory={`/${path.THE_LOAI}`} data={dataCategory?.data.items} />
-                    )}
+                    {expandCategory && <SubItemSidebar mainCategory={`/${path.THE_LOAI}`} data={dataCategory} />}
                   </li>
                 ) : (
                   <>
@@ -78,9 +76,7 @@ const Sidebar = () => {
                           <span className="text-sm">{nav.name}</span>
                         </div>
                         {expandCountry ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
-                        {expandCountry && (
-                          <SubItemSidebar mainCategory={`/${path.COUNTRY}`} data={dataCountry?.data.items} />
-                        )}
+                        {expandCountry && <SubItemSidebar mainCategory={`/${path.COUNTRY}`} data={dataCountry} />}
                       </li>
                     ) : (
                       <li key={nav.id} className={cn(nav.id === selectTab && 'text-[#FF8A00]')}>

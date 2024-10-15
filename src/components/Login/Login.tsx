@@ -1,4 +1,3 @@
-import React from 'react'
 import './Login.css'
 import { X } from 'lucide-react'
 import FormLogin from './FormLogin'
@@ -7,7 +6,7 @@ import { TiSocialGooglePlus } from 'react-icons/ti'
 import { cn } from '@/lib/utils'
 import FormRegister from './FormRegister'
 import { useSelectTab, useShowModal } from '@/stores/useShowModal'
-import { FacebookAuth, GoogleAuth } from '../firebase/firebase'
+import { FacebookAuth, GoogleAuth } from '../../firebase/firebase'
 import { useUserStore } from '@/stores/useUserStore'
 
 const Login = () => {
@@ -17,10 +16,8 @@ const Login = () => {
 
   const FacebookAuthButtonClicked = async () => {
     const userInfo = await FacebookAuth()
-    console.log(userInfo)
 
     if (userInfo?.user.displayName) {
-      console.log('render')
       setIsShowModal(false, null)
       setIsLogin(true)
       setUser(userInfo?.user.displayName)

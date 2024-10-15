@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import '@/components/Home/TopView/TopView.css'
 import { cn } from '@/lib/utils'
 import { useGetTopViewData } from '@/api/top-view'
 import { useTopViewStore } from '@/stores/useTopViewStore'
-import TitleFilm from '../TitleFilm'
-import FilmItemSkeleton from '@/components/Skeleton/FilmItemSkeleton'
 import Skeleton from 'react-loading-skeleton'
 
 interface TitleMovieProps {
@@ -35,11 +33,10 @@ const TitleTopView = ({ titleMovie }: TitleMovieProps) => {
   const { topViewData: weekData } = useGetTopViewData('modified.time')
   const { topViewData: monthData } = useGetTopViewData('year')
   const { setTopViewData } = useTopViewStore()
-
   useEffect(() => {
-    if (activeTab === 1) setTopViewData(dayData?.data?.items)
-    if (activeTab === 2) setTopViewData(weekData?.data?.items)
-    if (activeTab === 3) setTopViewData(monthData?.data?.items)
+    if (activeTab === 1) setTopViewData(dayData?.data)
+    if (activeTab === 2) setTopViewData(weekData?.data)
+    if (activeTab === 3) setTopViewData(monthData?.data)
   }, [isLoading, activeTab])
 
   if (isLoading) {

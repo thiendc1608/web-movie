@@ -1,11 +1,11 @@
-import {  ListDataTypes } from '@/type'
+import {  DetailFilmType, ListDataTypes } from '@/type'
 import { axiosClient } from './axios-client'
 import { toast } from 'react-toastify';
 import { useQuery } from '@tanstack/react-query';
 import { useQueryString } from '@/utils/utils';
 
 export const detailFilmApi = {
-  getDetailFilmApi: (url:string) => axiosClient.get<ListDataTypes>('/phim/' + url),
+  getDetailFilmApi: (url:string) => axiosClient.get<DetailFilmType>('/phim/' + url),
 }
 
 export const useGetDetailFilm = (url:string) => {

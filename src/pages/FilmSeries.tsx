@@ -31,18 +31,22 @@ const FilmSeries = () => {
 
   return (
     <>
-      <FilterFilm isNotShowSeeAll={false} data={homeData?.data?.items} isLoading={isLoading} />
+      {homeData?.data && <FilterFilm isNotShowSeeAll={false} data={homeData?.data} isLoading={isLoading} />}
       <div className="bg-[#151d25] border-t border-t-[#1e2732] custom-page lg:flex shadow-lg  min-h-screen relative">
         <div className="lg:mr-5 mb-5 lg:w-3/4">
           <div className="mb-3 mt-3">
-            <BreadcrumbFunction data={filmSeries?.data.breadCrumb} isLoading={isFilmSeriesLoading} />
-            <MovieCollectionItem
-              titleMovie={filmSeries?.data.titlePage}
-              data={filmSeries?.data.items}
-              isNotShowSeeAll={true}
-              countImageShow={filmSeries?.data.items.length}
-              isLoading={isFilmSeriesLoading}
-            />
+            {filmSeries?.data && (
+              <>
+                <BreadcrumbFunction data={filmSeries?.data} isLoading={isFilmSeriesLoading} />
+                <MovieCollectionItem
+                  titleMovie={filmSeries?.data.titlePage}
+                  data={filmSeries?.data}
+                  isNotShowSeeAll={true}
+                  countImageShow={filmSeries?.data.items.length}
+                  isLoading={isFilmSeriesLoading}
+                />
+              </>
+            )}
           </div>
         </div>
         <div className="lg:w-2/6">

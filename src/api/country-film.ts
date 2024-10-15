@@ -2,10 +2,10 @@ import { axiosClient } from './axios-client'
 import { toast } from 'react-toastify'
 import { useQuery } from '@tanstack/react-query'
 import { useQueryString } from '@/utils/utils'
-import { HomeListFilm } from '@/type'
+import { ListDataTypes } from '@/type'
 
 export const countryFilmApi = {
-  getCountryFilm: (url:string, page: number) => axiosClient.get<HomeListFilm[]>('/quoc-gia/' + url, { params: { page } }),
+  getCountryFilm: (url:string, page: number) => axiosClient.get<ListDataTypes>('/quoc-gia/' + url, { params: { page } }),
 }
 
 export const useGetCountryFilm = (url:string) => {

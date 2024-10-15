@@ -1,5 +1,4 @@
 import '@/components/Home/TopView/TopView.css'
-import TitleFilm from './TitleFilm'
 import { cn } from '@/lib/utils'
 import { _formatString } from '@/utils/utils'
 import { Link } from 'react-router-dom'

@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
-import { Breadcrumb } from '@/type'
+import { DetailFilmType, ListDataTypes } from '@/type'
 import { Flame, House, Siren } from 'lucide-react'
 import { Link, useLocation } from 'react-router-dom'
 import { Grip } from 'lucide-react'
 import Skeleton from 'react-loading-skeleton'
 
 interface BreadcrumbProps {
-  data: Breadcrumb[]
+  data: ListDataTypes | DetailFilmType
   isLoading: boolean
 }
 
@@ -14,8 +14,8 @@ const BreadcrumbFunction = ({ data, isLoading }: BreadcrumbProps) => {
   const location = useLocation()
   const [dataBreadcrumb, setDataBreadcrumb] = useState<string[]>([])
   useEffect(() => {
-    if (data?.length > 0) {
-      const { 0: first, [data.length - 1]: last } = data
+    if (data?.breadCrumb.length > 0) {
+      const { 0: first, [data?.breadCrumb.length - 1]: last } = data.breadCrumb
       if (location.pathname.includes('chi-tiet-phim')) {
         setDataBreadcrumb([first.name, 'Chi tiết phim', last.name])
       } else if (location.pathname.includes('sort')) {

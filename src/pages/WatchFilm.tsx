@@ -10,11 +10,11 @@ import { MediaPlayer, MediaProvider, Poster } from '@vidstack/react'
 import { defaultLayoutIcons, DefaultVideoLayout } from '@vidstack/react/player/layouts/default'
 import ShowEpisodes from '@/components/DetailFilm/ShowEpisodes'
 import { Download } from 'lucide-react'
-import MovieCollectionItem from '@/components/Home/MovieCollection/MovieCollectionItem'
 import { useShowEpisodes } from '@/stores/useShowEpisodes'
 import Skeleton from 'react-loading-skeleton'
 import { useGetHomeData } from '@/api/home-api'
 import { Episodes } from '@/type'
+import RelateFilm from '@/components/DetailFilm/RelateFilm'
 
 const WatchFilm = () => {
   const { filmName } = useParams()
@@ -22,20 +22,16 @@ const WatchFilm = () => {
   const { homeData, isLoading } = useGetHomeData()
   const [isExpanded, setIsExpanded] = useState(false)
   const { detailFilm, isLoading: isDetailFilm } = useGetDetailFilm(filmName ?? '')
-  console.log(detailFilm)
-
-  const category = detailFilm?.data?.item?.category[detailFilm?.data?.item?.category.length - 1].slug
-  const { relateFilm } = useGetRelateFilm(detailFilm?.data.item.slug, category)
   const dataStored = localStorage.getItem('urlDomain')
   const urlDomainImage = dataStored ? JSON.parse(dataStored).state.urlDomainImage : ''
 
   return (
     <div>
-      <FilterFilm isNotShowSeeAll={false} data={homeData?.data?.items} isLoading={isLoading} />
+      {homeData?.data && <FilterFilm isNotShowSeeAll={false} data={homeData?.data} isLoading={isLoading} />}
       <div className="bg-[#151d25] border-t border-t-[#1e2732] custom-page lg:flex shadow-lg">
         <div className="lg:mr-5 mb-5 lg:w-3/4">
           <div className="mb-3 mt-3">
-            <BreadcrumbFunction data={detailFilm?.data.breadCrumb} isLoading={isDetailFilm} />
+            {detailFilm?.data && <BreadcrumbFunction data={detailFilm?.data} isLoading={isDetailFilm} />}
             {isLoading ? (
               <Skeleton width={923} height={593} />
             ) : (
@@ -152,7 +148,7 @@ const WatchFilm = () => {
                     </div>
                   </div>
                 </div>
-                <ShowEpisodes data={detailFilm?.data.item} />
+                {detailFilm?.data && <ShowEpisodes data={detailFilm?.data.item} />}
               </>
             )}
             {isLoading ? (
@@ -195,15 +191,7 @@ const WatchFilm = () => {
                 </table>
               </div>
             )}
-            <div className="transition duration-300 mt-3">
-              <MovieCollectionItem
-                titleMovie="Có thể phù hợp với bạn"
-                data={relateFilm?.data.items}
-                isNotShowSeeAll={true}
-                countImageShow={12}
-                isLoading={isDetailFilm}
-              />
-            </div>
+            {detailFilm?.data && <RelateFilm data={detailFilm?.data} isLoading={isDetailFilm} />}
           </div>
         </div>
         <div className="lg:w-2/6">

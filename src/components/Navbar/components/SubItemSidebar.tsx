@@ -14,7 +14,7 @@ const SubItemSidebar = ({ mainCategory, data }: SubItemSidebarProps) => {
   const { setIsShowMenu } = useShowMenu()
   return (
     <ul className="absolute top-full left-0 bg-[#000c17] py-2 rounded-lg w-full h-screen z-50 overflow-y-scroll scroll-bar-custom">
-      {data?.map((item) => (
+      {data?.items?.map((item) => (
         <li
           key={item._id}
           className={cn(

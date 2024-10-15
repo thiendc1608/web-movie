@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { getApp, getApps, initializeApp } from "firebase/app";
 import { getAuth, signInWithPopup } from "firebase/auth";
-import { getDatabase, ref } from "firebase/database";
+import { getDatabase} from "firebase/database";
 import { FacebookAuthProvider } from "firebase/auth";
 import { GoogleAuthProvider } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use

@@ -11,7 +11,7 @@ import { cn } from '@/lib/utils'
 import { Link } from 'react-router-dom'
 import MovieCollectionItem from '../Home/MovieCollection/MovieCollectionItem'
 import { useGetRelateFilm } from '@/api/detail-film'
-import { Episodes, HomeListFilm, ListItemsType } from '@/type'
+import { Episodes, HomeListFilm } from '@/type'
 import Skeleton from 'react-loading-skeleton'
 
 interface DetailFilmItemProps {
@@ -92,13 +92,15 @@ const DetailFilmItem = ({ data, isLoading }: DetailFilmItemProps) => {
         </div>
       )}
       <div className="transition duration-300 mt-3">
-        <MovieCollectionItem
-          titleMovie="Có thể phù hợp với bạn"
-          data={relateFilm?.data?.items as unknown as ListItemsType}
-          isNotShowSeeAll={true}
-          countImageShow={12}
-          isLoading={isRelateFilm}
-        />
+        {relateFilm?.data && (
+          <MovieCollectionItem
+            titleMovie="Có thể phù hợp với bạn"
+            data={relateFilm?.data}
+            isNotShowSeeAll={true}
+            countImageShow={12}
+            isLoading={isRelateFilm}
+          />
+        )}
       </div>
     </>
   )

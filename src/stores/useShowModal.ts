@@ -1,6 +1,12 @@
 import { create } from "zustand";
 
-export const useShowModal = create((set) => ({
+type UseShowModalReturn = {
+  isShowModal: boolean,
+  contentModal: React.ReactNode | null,
+  setIsShowModal: (isShowModal:boolean, contentModal: React.ReactNode) => void
+}
+
+export const useShowModal = create<UseShowModalReturn>((set) => ({
     isShowModal: false,
     contentModal: null,
     setIsShowModal: (isShowModal:boolean, contentModal: React.ReactNode) => set(() => ({isShowModal, contentModal}))

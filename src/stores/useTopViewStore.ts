@@ -1,14 +1,14 @@
-import { HomeListFilm } from '@/type'
+import { ListDataTypes } from '@/type'
 
 //Creating Zustand Store
 import { create } from 'zustand'
 
 interface TopViewStore {
-  topViewData: HomeListFilm[],
-  setTopViewData: (data: HomeListFilm[]) => void,
+  topViewData: Partial<ListDataTypes>,
+  setTopViewData: (data: ListDataTypes) => void,
 }
 
 export const useTopViewStore = create<TopViewStore>((set) => ({
   topViewData: [],
-  setTopViewData: (data: HomeListFilm[]) => set({ topViewData: data }),
+  setTopViewData: (data: ListDataTypes) => set({ topViewData: data }),
 }))

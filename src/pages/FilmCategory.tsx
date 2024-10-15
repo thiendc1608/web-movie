@@ -32,18 +32,22 @@ const FilmCategory = () => {
 
   return (
     <>
-      <FilterFilm isNotShowSeeAll={false} data={homeData?.data?.items} isLoading={isLoading} />
+      {homeData?.data && <FilterFilm isNotShowSeeAll={false} data={homeData?.data} isLoading={isLoading} />}
       <div className="bg-[#151d25] border-t border-t-[#1e2732] custom-page lg:flex shadow-lg min-h-screen relative">
         <div className="lg:mr-5 mb-5 lg:w-3/4">
           <div className="mb-3 mt-3">
-            <BreadcrumbFunction data={filmCategoryData?.data.breadCrumb} isLoading={isFilmCategory} />
-            <MovieCollectionItem
-              titleMovie={`Thể loại ${filmCategoryData?.data.titlePage}`}
-              data={filmCategoryData?.data.items}
-              isNotShowSeeAll={true}
-              countImageShow={filmCategoryData?.data.items.length}
-              isLoading={isFilmCategory}
-            />
+            {filmCategoryData?.data && (
+              <>
+                <BreadcrumbFunction data={filmCategoryData?.data} isLoading={isFilmCategory} />
+                <MovieCollectionItem
+                  titleMovie={`Thể loại ${filmCategoryData?.data.titlePage}`}
+                  data={filmCategoryData?.data}
+                  isNotShowSeeAll={true}
+                  countImageShow={filmCategoryData?.data.items.length}
+                  isLoading={isFilmCategory}
+                />
+              </>
+            )}
           </div>
         </div>
         <div className="lg:w-2/6">
@@ -51,12 +55,14 @@ const FilmCategory = () => {
             <TopView countImageShow={10} />
           </div>
         </div>
-        <Pagination
-          totalCount={+filmCategoryData?.data.params.pagination.totalItems || 1}
-          currentPage={pageCurrent}
-          setPageCurrent={setPageCurrent}
-          pageSize={+filmCategoryData?.data.params.pagination.totalItemsPerPage || 1}
-        />
+        {filmCategoryData?.data && (
+          <Pagination
+            totalCount={+filmCategoryData?.data.params.pagination.totalItems || 1}
+            currentPage={pageCurrent}
+            setPageCurrent={setPageCurrent}
+            pageSize={+filmCategoryData?.data.params.pagination.totalItemsPerPage || 1}
+          />
+        )}
       </div>
     </>
   )

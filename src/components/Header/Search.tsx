@@ -52,12 +52,14 @@ const Search = () => {
       <button className="hover:bg-black border-[1.5px] border-[#ff8a00] h-[38px] p-[5.5px] rounded-r-md">
         <IoIosSearch size={26} color="#ff8a00" />
       </button>
-      <InfoSearch
-        data={searchResults?.[0]?.data?.items}
-        query={query}
-        isShowResult={isShowResult}
-        setIsShowResult={setIsShowResult}
-      />
+      {searchResults?.[0]?.data && (
+        <InfoSearch
+          data={searchResults?.[0]?.data}
+          query={query}
+          isShowResult={isShowResult}
+          setIsShowResult={setIsShowResult}
+        />
+      )}
     </div>
   )
 }

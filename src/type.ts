@@ -7,14 +7,16 @@ export interface CategoryAndCountry {
   slug: string
 }
 
-export type Categories = CategoryAndCountry[]
+export type Categories = {
+  items: CategoryAndCountry[]
+}
 
 export type Breadcrumb = {
   name: string
   slug?: string
   isCurrent: boolean
   position: number
-}
+}[]
 
 export type Episodes = {
   name: string
@@ -32,7 +34,7 @@ export type voteFilm = {
   vote_count: number
 }
 export interface HomeListFilm {
-  category: Categories
+  category: CategoryAndCountry[]
   content: string
   country: CategoryAndCountry[]
   actor: string[]
@@ -80,13 +82,18 @@ export type SEOOnPage = {
 export type ListDataTypes = {
   APP_DOMAIN_CDN_IMAGE: string,
   APP_DOMAIN_FRONTEND: string,
-  breadCrumb: Breadcrumb[],
+  breadCrumb: Breadcrumb,
   items: HomeListFilm[],
   params: ParamsTypes,
   seoOnPage: SEOOnPage,
+  titlePage: string
   type_list: string
 }
 
+export type DetailFilmType = {
+  breadCrumb: Breadcrumb,
+  item: HomeListFilm,
+}
 export type FormData = {
   email: string
   password: string

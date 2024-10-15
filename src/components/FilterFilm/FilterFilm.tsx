@@ -2,7 +2,7 @@ import SlideFilm from '@/components/Home/SlideFilm/SlideFilm'
 import { Label } from '@/components/ui/label'
 import { Switch } from '@/components/ui/switch'
 import { ListFilm, ListYear, MoviePostTime } from '@/utils/constants'
-import { Categories, HomeListFilm, ListItemsType } from '@/type'
+import { Categories, CategoryAndCountry, ListDataTypes } from '@/type'
 import { useAllDataGetApi } from '@/stores/useAllDataGetApi'
 import { Button } from '@/components/ui/button'
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form'
@@ -33,39 +33,29 @@ const FormSchema = z.object({
 })
 
 interface FilterFilmProps {
-  data: ListItemsType
+  data: ListDataTypes
   isNotShowSeeAll: boolean
   isLoading: boolean
-}
-
-interface FilterStatus {
-  isCheckFilter: boolean
-  setIsCheckFilter: (data: boolean) => void
-  setTimePost: (data: string) => void
-  setListMovie: (data: string) => void
-  setListCategory: (data: string) => void
-  setListCountry: (data: string) => void
-  setListYear: (data: string) => void
 }
 
 const FilterFilm = ({ data, isNotShowSeeAll, isLoading }: FilterFilmProps) => {
   const navigate = useNavigate()
 
   const { isCheckFilter, setIsCheckFilter, setTimePost, setListMovie, setListCategory, setListCountry, setListYear } =
-    useFilterStatus<FilterStatus>()
+    useFilterStatus()
   const { dataCategory, dataCountry } = useAllDataGetApi()
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
   })
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
-    setTimePost(data.sort_field)
-    setListMovie(data.listFilm)
-    setListCategory(data.category)
-    setListCountry(data.country)
-    setListYear(data.year)
+  function onSubmit(dataSubmit: z.infer<typeof FormSchema>) {
+    setTimePost(dataSubmit.sort_field)
+    setListMovie(dataSubmit.listFilm)
+    setListCategory(dataSubmit.category)
+    setListCountry(dataSubmit.country)
+    setListYear(dataSubmit.year)
 
-    let arr = Object.entries(data)
+    let arr = Object.entries(dataSubmit)
     arr.map((el) => (el[1] === 'Chọn tất cả' ? (el[1] = '') : el[1]))
     const arrData = arr[0]
 
@@ -77,7 +67,7 @@ const FilterFilm = ({ data, isNotShowSeeAll, isLoading }: FilterFilmProps) => {
     const objData = Object.fromEntries(newArr)
 
     navigate({
-      pathname: `/sort/${_formatString(data.listFilm)}`,
+      pathname: `/sort/${_formatString(dataSubmit.listFilm)}`,
       search: createSearchParams(objData).toString(),
     })
   }
@@ -162,7 +152,7 @@ const FilterFilm = ({ data, isNotShowSeeAll, isLoading }: FilterFilmProps) => {
                       </FormControl>
                       <SelectContent className="bg-[#555E68] text-white border-none">
                         <SelectItem value="Chọn tất cả">Chọn tất cả</SelectItem>
-                        {dataCategory.data.items?.map((item: Categories, idx: number) => (
+                        {dataCategory.items?.map((item: CategoryAndCountry, idx: number) => (
                           <SelectItem key={idx} value={item.name}>
                             {item.name}
                           </SelectItem>

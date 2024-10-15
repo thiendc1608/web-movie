@@ -15,6 +15,7 @@ const CarToon = () => {
   const navigate = useNavigate()
   const [pageCurrent, setPageCurrent] = useState(1)
   const [searchParams] = useSearchParams()
+  console.log(carToonData)
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -29,22 +30,21 @@ const CarToon = () => {
     })
   }, [pageCurrent])
 
-  console.log(carToonData)
-
   return (
     <>
-      <FilterFilm isNotShowSeeAll={false} data={homeData?.data?.items} isLoading={isLoading} />
+      {homeData?.data && <FilterFilm isNotShowSeeAll={false} data={homeData?.data} isLoading={isLoading} />}
       <div className="bg-[#151d25] border-t border-t-[#1e2732] custom-page lg:flex shadow-lg min-h-screen relative">
         <div className="lg:mr-5 mb-5 lg:w-3/4">
           <div className="mb-3 mt-3">
-            <BreadcrumbFunction data={carToonData?.data.breadCrumb} isLoading={isCartoonData} />
-            <MovieCollectionItem
-              titleMovie={carToonData?.data.titlePage}
-              data={carToonData?.data.items}
-              isNotShowSeeAll={true}
-              countImageShow={carToonData?.data.items.length}
-              isLoading={isCartoonData}
-            />
+            {carToonData && <BreadcrumbFunction data={carToonData.data} isLoading={isCartoonData} />}
+            {carToonData?.data && (
+              <MovieCollectionItem
+                titleMovie={carToonData?.data.titlePage}
+                data={carToonData?.data}
+                isNotShowSeeAll={true}
+                isLoading={isCartoonData}
+              />
+            )}
           </div>
         </div>
         <div className="lg:w-2/6">
@@ -52,12 +52,14 @@ const CarToon = () => {
             <TopView countImageShow={10} />
           </div>
         </div>
-        <Pagination
-          totalCount={+carToonData?.data.params.pagination.totalItems || 1}
-          currentPage={pageCurrent}
-          setPageCurrent={setPageCurrent}
-          pageSize={+carToonData?.data.params.pagination.totalItemsPerPage || 1}
-        />
+        {carToonData?.data && (
+          <Pagination
+            totalCount={+carToonData?.data.params.pagination.totalItems || 1}
+            currentPage={pageCurrent}
+            setPageCurrent={setPageCurrent}
+            pageSize={+carToonData?.data.params.pagination.totalItemsPerPage || 1}
+          />
+        )}
       </div>
     </>
   )

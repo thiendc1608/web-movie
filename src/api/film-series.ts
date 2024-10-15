@@ -1,11 +1,11 @@
-import { HomeListFilm } from '@/type'
+import { ListDataTypes } from '@/type'
 import { axiosClient } from './axios-client'
 import { toast } from 'react-toastify'
 import { useQuery } from '@tanstack/react-query'
 import { useQueryString } from '@/utils/utils'
 
 export const filmSeriesApi = {
-  getFilmSeries: (page: number) => axiosClient.get<HomeListFilm[]>('/danh-sach/phim-bo', { params: { page } }),
+  getFilmSeries: (page: number) => axiosClient.get<ListDataTypes>('/danh-sach/phim-bo', { params: { page } }),
 }
 
 export const useGetFilmSeries = () => {

@@ -52,17 +52,17 @@ const FilterFilmPage = () => {
 
   return (
     <div>
-      <FilterFilm isNotShowSeeAll={false} data={homeData?.data?.items} isLoading={isLoading} />
+      {homeData?.data && <FilterFilm isNotShowSeeAll={false} data={homeData?.data?.items} isLoading={isLoading} />}
       <div className="bg-[#151d25] border-t border-t-[#1e2732] custom-page lg:flex shadow-lg relative">
         <div className="lg:mr-5 mb-5 lg:w-3/4">
           <div className="mb-3 mt-3">
-            <BreadcrumbFunction data={relateFilm?.data.breadCrumb} isLoading={isRelateFilm} />
-            {relateFilm?.data?.items.length > 0 ? (
+            {relateFilm?.data && <BreadcrumbFunction data={relateFilm?.data} isLoading={isRelateFilm} />}
+            {relateFilm?.data && relateFilm?.data?.items.length > 0 ? (
               <MovieCollectionItem
                 titleMovie={`Lọc phim: ${listMovie} ${listCategory === 'Chọn tất cả' ? '' : listCategory} ${
                   listCountry === 'Chọn tất cả' ? '' : listCountry
                 } ${listYear === 'Chọn tất cả' ? '' : listYear}`}
-                data={relateFilm?.data.items}
+                data={relateFilm?.data}
                 isNotShowSeeAll={true}
                 countImageShow={relateFilm?.data.items.length}
                 isLoading={isLoading}
@@ -88,12 +88,14 @@ const FilterFilmPage = () => {
             <TopView countImageShow={10} />
           </div>
         </div>
-        <Pagination
-          totalCount={+relateFilm?.data.params.pagination.totalItems || 1}
-          currentPage={pageCurrent}
-          setPageCurrent={setPageCurrent}
-          pageSize={+relateFilm?.data.params.pagination.totalItemsPerPage || 1}
-        />
+        {relateFilm?.data && (
+          <Pagination
+            totalCount={+relateFilm?.data.params.pagination.totalItems || 1}
+            currentPage={pageCurrent}
+            setPageCurrent={setPageCurrent}
+            pageSize={+relateFilm?.data.params.pagination.totalItemsPerPage || 1}
+          />
+        )}
       </div>
     </div>
   )

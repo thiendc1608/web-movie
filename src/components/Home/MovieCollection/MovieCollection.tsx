@@ -10,19 +10,20 @@ const MovieCollection = () => {
   const { movieData, isLoading: isMovieData } = useGetMovieData()
   const { tvShowsData, isLoading: isTVShowsData } = useGetTVShowsData()
   const { carToonData, isLoading: isCarToonData } = useGetCarToonData()
-  console.log(filmSeries)
 
   return (
     <div className="custom-page pb-[3%] bg-[#151d25]">
       <div className="flex flex-col lg:flex-row items-start">
         <div className="lg:w-3/4">
-          <MovieCollectionItem
-            titleMovie="Phim Bộ"
-            data={filmSeries?.data}
-            countImageShow={12}
-            isLoading={isFilmSeriesLoading}
-            isNotShowSeeAll={true}
-          />
+          {filmSeries?.data && (
+            <MovieCollectionItem
+              titleMovie="Phim Bộ"
+              data={filmSeries?.data}
+              countImageShow={12}
+              isLoading={isFilmSeriesLoading}
+              isNotShowSeeAll={true}
+            />
+          )}
           <MovieCollectionItem
             titleMovie="Phim Lẻ"
             data={movieData?.data}

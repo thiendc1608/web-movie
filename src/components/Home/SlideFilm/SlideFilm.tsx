@@ -14,11 +14,11 @@ import 'swiper/css/navigation'
 
 import '@/style.css'
 import { Autoplay, Navigation, Pagination } from 'swiper/modules'
-import { HomeListFilm, ListItemsType } from '@/type'
+import { HomeListFilm, ListDataTypes } from '@/type'
 import { Link } from 'react-router-dom'
 
 interface SlideFilmProps {
-  data: ListItemsType
+  data: ListDataTypes
   isLoading: boolean
 }
 const SlideFilm = ({ data, isLoading }: SlideFilmProps) => {
@@ -46,7 +46,7 @@ const SlideFilm = ({ data, isLoading }: SlideFilmProps) => {
         modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper relative group hover:cursor-pointer overflow-hidden "
       >
-        {data?.slice(0, 10).map((item: HomeListFilm) => (
+        {data?.items?.slice(0, 10).map((item: HomeListFilm) => (
           <SwiperSlide key={item._id}>
             <Link to={`/chi-tiet-phim/${item.slug}`}>
               <div
