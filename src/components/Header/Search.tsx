@@ -5,13 +5,14 @@ import '@/components/SearchFilm/SearchFilm.css'
 import { searchFilmApi } from '@/api/search-film'
 import { ListDataTypes } from '@/type'
 import InfoSearch from '../SearchFilm/InfoSearch'
+import { useShowResultSearch } from '@/stores/useShowModal'
 
 const Search = () => {
   const [, startTransition] = useTransition()
   const [query, setQuery] = useState('')
   const [searchResults, setSearchResults] = useState<ListDataTypes>()
   const searchQuery = useDebounce(query, 1000)
-  const [isShowResult, setIsShowResult] = useState(false)
+  const { setIsShowResult } = useShowResultSearch()
 
   useEffect(() => {
     if (searchQuery) {
@@ -46,9 +47,7 @@ const Search = () => {
       <button className="hover:bg-black border-[1.5px] border-[#ff8a00] h-[38px] p-[5.5px] rounded-r-md">
         <IoIosSearch size={26} color="#ff8a00" />
       </button>
-      {searchResults?.items && (
-        <InfoSearch data={searchResults} query={query} isShowResult={isShowResult} setIsShowResult={setIsShowResult} />
-      )}
+      {searchResults?.items && <InfoSearch data={searchResults} query={query} />}
     </div>
   )
 }

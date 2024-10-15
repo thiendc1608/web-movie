@@ -23,11 +23,22 @@ export const useSelectTab = create<UseSelectTabReturn>((set) => ({
 }))
 
 interface UseShowMenuReturn {
-    isShowMenu: boolean;
-    setIsShowMenu: (value: boolean) => void;
-  }
+  isShowMenu: boolean;
+  setIsShowMenu: (value: boolean) => void;
+}
   
-  export const useShowMenu = create<UseShowMenuReturn>((set) => ({
-    isShowMenu: false,
-    setIsShowMenu: (value: boolean) => set({ isShowMenu: value }),
-  }));
+export const useShowMenu = create<UseShowMenuReturn>((set) => ({
+  isShowMenu: false,
+  setIsShowMenu: (value: boolean) => set({ isShowMenu: value }),
+}));
+
+// variable show/hide result search
+interface UseShowResultSearch {
+  isShowResult: boolean;
+  setIsShowResult: (value: boolean) => void;
+}
+
+export const useShowResultSearch = create<UseShowResultSearch>((set) => ({
+  isShowResult: false,
+  setIsShowResult: (value: boolean) => set({ isShowResult: value }),
+}))

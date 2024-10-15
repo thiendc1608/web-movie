@@ -1,3 +1,4 @@
+import { useShowResultSearch } from '@/stores/useShowModal'
 import { HomeListFilm, ListDataTypes } from '@/type'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import 'react-lazy-load-image-component/src/effects/blur.css'
@@ -8,13 +9,14 @@ interface TopViewItemProps {
   data: ListDataTypes
 }
 const TopViewItem = ({ countImageShow, data }: TopViewItemProps) => {
+  const { setIsShowResult } = useShowResultSearch()
   const dataStored = localStorage.getItem('urlDomain')
   const urlDomainImage = dataStored ? JSON.parse(dataStored).state.urlDomainImage : ''
 
   return (
     <>
       {data?.items?.slice(0, countImageShow).map((item: HomeListFilm) => (
-        <Link to={`/chi-tiet-phim/${item.slug}`} key={item._id}>
+        <Link to={`/chi-tiet-phim/${item.slug}`} key={item._id} onClick={() => setIsShowResult(false)}>
           <div
             className="rightbar-custom group flex items-center gap-4 p-3 rounded-md transition duration-300 ease-in-out 
       animate-gradientMoveltr

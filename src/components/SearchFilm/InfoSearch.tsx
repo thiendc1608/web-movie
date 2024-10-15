@@ -1,14 +1,15 @@
 import { useEffect } from 'react'
 import { ListDataTypes } from '@/type'
 import TopViewItem from '../Home/TopView/TopViewItem'
+import { useShowResultSearch } from '@/stores/useShowModal'
 
 interface InfoSearchProps {
   data: ListDataTypes
   query: string
-  isShowResult: boolean
-  setIsShowResult: React.Dispatch<React.SetStateAction<boolean>>
 }
-const InfoSearch = ({ data, query, isShowResult, setIsShowResult }: InfoSearchProps) => {
+const InfoSearch = ({ data, query }: InfoSearchProps) => {
+  const { isShowResult, setIsShowResult } = useShowResultSearch()
+
   useEffect(() => {
     const handleClickOutOptions = (e: Event) => {
       const displayResultSearch = document.getElementById('display-result-search')
