@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react'
+import { useEffect, useState } from 'react'
 import { useGetRelateFilm } from '@/api/detail-film'
 import BreadcrumbFunction from '@/components/BreadCrumb/BreadcrumbFunction'
 import TopView from '@/components/Home/TopView/TopView'
@@ -12,6 +12,13 @@ import { useGetHomeData } from '@/api/home-api'
 import Skeleton from 'react-loading-skeleton'
 import Pagination from '@/components/Pagination/Pagination'
 
+interface FilterStatus {
+  listMovie: string
+  listCategory: string
+  listCountry: string
+  listYear: string
+}
+
 const FilterFilmPage = () => {
   const { homeData, isLoading } = useGetHomeData()
   const queryString = useQueryString()
@@ -23,7 +30,8 @@ const FilterFilmPage = () => {
     queryString.year,
     queryString.sort_field
   )
-  const { listMovie, listCategory, listCountry, listYear } = useFilterStatus()
+
+  const { listMovie, listCategory, listCountry, listYear } = useFilterStatus<FilterStatus>()
   const { pathname } = useLocation()
   const navigate = useNavigate()
   const [pageCurrent, setPageCurrent] = useState(1)

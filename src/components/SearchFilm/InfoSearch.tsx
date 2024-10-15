@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { HomeListFilm } from '@/type'
 import TopViewItem from '../Home/TopView/TopViewItem'
 

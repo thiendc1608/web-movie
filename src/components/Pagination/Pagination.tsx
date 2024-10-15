@@ -1,6 +1,5 @@
 import { usePagination } from '@/hooks/usePagination'
 import { cn } from '@/lib/utils'
-import React from 'react'
 import { ChevronLeft, Ellipsis, ChevronRight, ChevronsRight, ChevronsLeft } from 'lucide-react'
 interface PaginationProps {
   totalCount: number

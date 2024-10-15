@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import FilterFilm from '@/components/FilterFilm/FilterFilm'
 import { createSearchParams, Link, useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { House, Flame, Siren } from 'lucide-react'

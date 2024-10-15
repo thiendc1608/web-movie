@@ -14,10 +14,11 @@ import MovieCollectionItem from '@/components/Home/MovieCollection/MovieCollecti
 import { useShowEpisodes } from '@/stores/useShowEpisodes'
 import Skeleton from 'react-loading-skeleton'
 import { useGetHomeData } from '@/api/home-api'
+import { Episodes } from '@/type'
 
 const WatchFilm = () => {
   const { filmName } = useParams()
-  const { episodes } = useShowEpisodes()
+  const { episodes } = useShowEpisodes() as { episodes: number }
   const { homeData, isLoading } = useGetHomeData()
   const [isExpanded, setIsExpanded] = useState(false)
   const { detailFilm, isLoading: isDetailFilm } = useGetDetailFilm(filmName ?? '')
@@ -165,12 +166,12 @@ const WatchFilm = () => {
                     </tr>
                   </thead>
                   <tbody className="hover:bg-[#04090e]">
-                    {detailFilm?.data.item.episodes[0].server_data.map((link, idx) => (
+                    {detailFilm?.data.item.episodes[0].server_data.map((link: Episodes, idx: number) => (
                       <tr key={idx} className="border-[#202b35] border-b-[1px]">
                         <td className="p-[8px] flex items-center gap-2 h-full lg:leading-[56.5px] leading-[20px] cursor-pointer group">
                           <Download size={20} className="group-hover:text-[#b83826]" />
                           <Link
-                            to={link.link_m3u8 || null}
+                            to={link.link_m3u8 ?? ''}
                             className="text-[#87c3f9] text-[16px] group-hover:text-[#b83826]"
                           >
                             {link.filename

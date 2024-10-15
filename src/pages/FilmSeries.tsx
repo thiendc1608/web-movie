@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import FilterFilm from '@/components/FilterFilm/FilterFilm'
 import { useGetFilmSeries } from '@/api/film-series'
 import { createSearchParams, useLocation, useNavigate, useSearchParams } from 'react-router-dom'

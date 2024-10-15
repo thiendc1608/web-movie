@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { navLink } from '@/utils/constants'
 import { NavLink } from 'react-router-dom'
 import { useGetCategory } from '@/api'
@@ -19,7 +19,7 @@ const Navbar = () => {
   const { setDataCategory, setDataCountry } = useAllDataGetApi()
   const [isShowCategory, setIsShowCategory] = useState(false)
   const [isShowCountry, setIsShowCountry] = useState(false)
-  const { isShowMenu, setIsShowMenu } = useShowMenu()
+  const { setIsShowMenu } = useShowMenu()
 
   useEffect(() => {
     if (categoryData) setDataCategory(categoryData)

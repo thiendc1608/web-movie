@@ -17,14 +17,11 @@ export type Breadcrumb = {
 }
 
 export type Episodes = {
-  server_name: string
-  server_data: {
-    name: string
-    slug: string
-    link_m3u8: string
-    link_embed: string
-    filename: string
-  }[]
+  name: string
+  slug: string
+  link_m3u8: string
+  link_embed: string
+  filename: string
 }
 
 export type voteFilm = {
@@ -45,7 +42,10 @@ export interface HomeListFilm {
   director: string[]
   episode_current: string
   episode_total: string
-  episodes: Episodes[]
+  episodes: {
+    server_name: string
+    server_data: Episodes[]
+  }
   lang: string
   name: string
   origin_name: string
@@ -64,20 +64,17 @@ export interface HomeListFilm {
 }
 
 export type FormData = {
-    email: string
-    password: string;
-    confirmPassword?: string;
-  };
+  email: string
+  password: string
+  confirmPassword?: string
+}
 
-export const UserSchema: ZodType<FormData> = z
-  .object({
-    email: z.string().min(6, { message: 'Username is too short' }).max(30, { message: 'Username is too long' }),
-    password: z
-    .string()
-    .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%&*-])[A-Za-z\d!@#$%&*-]{8,}$/),
-    // confirmPassword: z.string(),
-  })
-  // .refine((data) => data.password === data.confirmPassword, {
-  //   message: 'Passwords do not match',
-  //   path: ['confirmPassword'], // path of error
-  // })
+export const UserSchema: ZodType<FormData> = z.object({
+  email: z.string().min(6, { message: 'Username is too short' }).max(30, { message: 'Username is too long' }),
+  password: z.string().regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%&*-])[A-Za-z\d!@#$%&*-]{8,}$/),
+  // confirmPassword: z.string(),
+})
+// .refine((data) => data.password === data.confirmPassword, {
+//   message: 'Passwords do not match',
+//   path: ['confirmPassword'], // path of error
+// })

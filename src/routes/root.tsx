@@ -8,7 +8,10 @@ import { Outlet } from 'react-router-dom'
 import 'react-toastify/dist/ReactToastify.css'
 
 export default function Root() {
-  const { isShowModal, contentModal } = useShowModal()
+  const { isShowModal, contentModal } = useShowModal() as {
+    isShowModal: boolean
+    contentModal: React.ReactNode // or a more specific type if you know what it is
+  }
 
   const bodyElement = document.getElementsByTagName('body')[0]
   if (isShowModal) bodyElement.style.overflow = 'hidden'

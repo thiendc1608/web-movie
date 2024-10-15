@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react'
 import FilterFilm from '@/components/FilterFilm/FilterFilm'
 import { useParams } from 'react-router-dom'
 import TopView from '@/components/Home/TopView/TopView'
