@@ -46,7 +46,7 @@ const SlideFilm = ({ data, isLoading }: SlideFilmProps) => {
         modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper relative group hover:cursor-pointer overflow-hidden "
       >
-        {data.slice(0, 10).map((item: HomeListFilm) => (
+        {data?.slice(0, 10).map((item: HomeListFilm) => (
           <SwiperSlide key={item._id}>
             <Link to={`/chi-tiet-phim/${item.slug}`}>
               <div

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import BreadcrumbFunction from '@/components/BreadCrumb/BreadcrumbFunction'
 import FilterFilm from '@/components/FilterFilm/FilterFilm'
 import TopView from '@/components/Home/TopView/TopView'
@@ -22,7 +22,9 @@ const WatchFilm = () => {
   const { homeData, isLoading } = useGetHomeData()
   const [isExpanded, setIsExpanded] = useState(false)
   const { detailFilm, isLoading: isDetailFilm } = useGetDetailFilm(filmName ?? '')
-  const category = detailFilm?.data.item.category[detailFilm?.data.item.category.length - 1].slug
+  console.log(detailFilm)
+
+  const category = detailFilm?.data?.item?.category[detailFilm?.data?.item?.category.length - 1].slug
   const { relateFilm } = useGetRelateFilm(detailFilm?.data.item.slug, category)
   const dataStored = localStorage.getItem('urlDomain')
   const urlDomainImage = dataStored ? JSON.parse(dataStored).state.urlDomainImage : ''

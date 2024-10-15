@@ -6,12 +6,22 @@ export const useShowModal = create((set) => ({
     setIsShowModal: (isShowModal:boolean, contentModal: React.ReactNode) => set(() => ({isShowModal, contentModal}))
 }))
 
-export const useSelectTab = create((set) => ({
+interface UseSelectTabReturn {
+  selectTab: string;
+  setSelectTab: (selectTab: string) => void;
+}
+
+export const useSelectTab = create<UseSelectTabReturn>((set) => ({
     selectTab: "Login",
     setSelectTab: (selectTab: string) => set(() => ({selectTab}))
 }))
 
-export const useShowMenu = create((set) => ({
+interface UseShowMenuReturn {
+    isShowMenu: boolean;
+    setIsShowMenu: (value: boolean) => void;
+  }
+  
+  export const useShowMenu = create<UseShowMenuReturn>((set) => ({
     isShowMenu: false,
-    setIsShowMenu: (isShowMenu: boolean) => set(() => ({isShowMenu}))
-}))
+    setIsShowMenu: (value: boolean) => set({ isShowMenu: value }),
+  }));

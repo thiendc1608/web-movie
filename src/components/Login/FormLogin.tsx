@@ -1,4 +1,3 @@
-import React from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, SubmitHandler } from 'react-hook-form'
 
@@ -6,15 +5,16 @@ import { Button } from '@/components/ui/button'
 import { FormData, UserSchema } from '@/type'
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import { toast } from 'react-toastify'
-import { useNavigate } from 'react-router-dom'
 import { useShowModal } from '@/stores/useShowModal'
-import { useUserStore } from '@/stores/useUserStore'
-import { child, get } from 'firebase/database'
-import { dbref } from '../firebase/firebase'
+import { UserStore, useUserStore } from '@/stores/useUserStore'
+
+interface UseShowModalReturn {
+  setIsShowModal: (isShowModal: boolean, contentModal: React.ReactNode) => void
+}
 
 const FormLogin = () => {
-  const { setIsShowModal } = useShowModal()
-  const { setUser, setIsLogin, setToken } = useUserStore()
+  const { setIsShowModal } = useShowModal() as UseShowModalReturn
+  const { setUser, setIsLogin, setToken } = useUserStore() as UserStore
   const {
     register,
     handleSubmit,
@@ -34,6 +34,7 @@ const FormLogin = () => {
     signInWithEmailAndPassword(auth, data.email, data.password)
       .then((userCredential) => {
         // Signed in
+        console.log(userCredential)
         const user = userCredential.user
         console.log(user)
 
@@ -42,7 +43,7 @@ const FormLogin = () => {
           setIsShowModal(false, null)
           setIsLogin(true)
           setUser(user.email.split('@')[0])
-          setToken(user.accessToken)
+          setToken(user?.accessToken)
         }
 
         // ...
@@ -71,7 +72,7 @@ const FormLogin = () => {
           className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-black"
           {...register('email', { required: true })}
         />
-        {errors?.email?.ref.value === '' ? (
+        {errors?.email?.ref?.value === '' ? (
           <span className="text-sm text-[#f87171]">This field is required</span>
         ) : (
           <span className="text-sm text-[#f87171]">{errors.email?.message}</span>
@@ -86,7 +87,7 @@ const FormLogin = () => {
           placeholder="Password"
           {...register('password', { required: true })}
         />
-        {errors?.password?.ref.value === '' ? (
+        {errors?.password?.ref?.value === '' ? (
           <span className="text-sm text-[#f87171]">This field is required</span>
         ) : (
           <span className="text-sm text-[#f87171]">{errors.password?.message}</span>

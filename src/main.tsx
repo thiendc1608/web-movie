@@ -18,7 +18,6 @@ import {
 import { SkeletonTheme } from 'react-loading-skeleton'
 import './index.css'
 import { path } from './utils/path'
-import SearchFilm from './pages/SearchFilm'
 import { ToastContainer } from 'react-toastify'
 import Movie from './pages/Movie'
 
@@ -75,22 +74,24 @@ const router = createBrowserRouter([
 ])
 
 createRoot(document.getElementById('root')!).render(
-  <SkeletonTheme baseColor="#313131" highlightColor="#525252">
-    <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
-      <ReactQueryDevtools initialIsOpen={false} />
-    </QueryClientProvider>
-    <ToastContainer
-      position="top-right"
-      autoClose={1000}
-      hideProgressBar={false}
-      newestOnTop={false}
-      closeOnClick
-      rtl={false}
-      pauseOnFocusLoss={false}
-      draggable={false}
-      pauseOnHover={false}
-      theme="colored"
-    />
-  </SkeletonTheme>
+  <StrictMode>
+    <SkeletonTheme baseColor="#313131" highlightColor="#525252">
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+        <ReactQueryDevtools initialIsOpen={false} />
+      </QueryClientProvider>
+      <ToastContainer
+        position="top-right"
+        autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable={false}
+        pauseOnHover={false}
+        theme="colored"
+      />
+    </SkeletonTheme>
+  </StrictMode>
 )

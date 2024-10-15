@@ -1,4 +1,3 @@
-import React from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
@@ -35,8 +34,8 @@ const FormRegister = () => {
           toast.success('User is created successfully')
           setSelectTab('Login')
           set(ref(db, 'users/' + user.uid), {
-            email: user.email,
-            accessToken: user.accessToken,
+            email: user?.email,
+            accessToken: user?.accessToken,
           })
         }
 
@@ -73,7 +72,7 @@ const FormRegister = () => {
           className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-black"
           {...register('email', { required: true })}
         />
-        {errors?.email?.ref.value === '' ? (
+        {errors?.email?.ref?.value === '' ? (
           <span className="text-sm text-[#f87171]">This field is required</span>
         ) : (
           <span className="text-sm text-[#f87171]">{errors.email?.message}</span>
@@ -87,7 +86,7 @@ const FormRegister = () => {
           placeholder="Password"
           {...register('password')}
         />
-        {errors?.password?.ref.value === '' ? (
+        {errors?.password?.ref?.value === '' ? (
           <span className="text-sm text-[#f87171]">This field is required</span>
         ) : (
           <span className="text-sm text-[#f87171]">{errors.password?.message}</span>

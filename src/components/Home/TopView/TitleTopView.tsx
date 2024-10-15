@@ -37,10 +37,10 @@ const TitleTopView = ({ titleMovie }: TitleMovieProps) => {
   const { setTopViewData } = useTopViewStore()
 
   useEffect(() => {
-    if (activeTab === 1) setTopViewData(dayData?.data.items)
-    if (activeTab === 2) setTopViewData(weekData?.data.items)
-    if (activeTab === 3) setTopViewData(monthData?.data.items)
-  }, [isLoading, activeTab, setTopViewData])
+    if (activeTab === 1) setTopViewData(dayData?.data?.items)
+    if (activeTab === 2) setTopViewData(weekData?.data?.items)
+    if (activeTab === 3) setTopViewData(monthData?.data?.items)
+  }, [isLoading, activeTab])
 
   if (isLoading) {
     return <Skeleton height={1600} width={381.53} className="mt-[10px]" />

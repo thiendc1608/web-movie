@@ -1,7 +1,5 @@
-import React from 'react'
 import { Categories } from '@/type'
 import { Link } from 'react-router-dom'
-import { path } from '@/utils/path'
 
 interface SubItemProps {
   mainCategory: string

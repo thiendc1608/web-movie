@@ -25,17 +25,14 @@ export type Episodes = {
 }
 
 export type voteFilm = {
-  tmdb: {
-    id: string
-    season: string
-    type: string
-    vote_average: number
-    vote_count: number
-  }
+  id: string
+  season: string
+  type: string
+  vote_average: number
+  vote_count: number
 }
 export interface HomeListFilm {
   category: Categories
-  chieurap: boolean
   content: string
   country: string
   actor: string[]
@@ -72,9 +69,4 @@ export type FormData = {
 export const UserSchema: ZodType<FormData> = z.object({
   email: z.string().min(6, { message: 'Username is too short' }).max(30, { message: 'Username is too long' }),
   password: z.string().regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%&*-])[A-Za-z\d!@#$%&*-]{8,}$/),
-  // confirmPassword: z.string(),
 })
-// .refine((data) => data.password === data.confirmPassword, {
-//   message: 'Passwords do not match',
-//   path: ['confirmPassword'], // path of error
-// })

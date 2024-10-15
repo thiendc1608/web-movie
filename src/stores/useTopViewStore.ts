@@ -3,13 +3,12 @@ import { HomeListFilm } from '@/type'
 //Creating Zustand Store
 import { create } from 'zustand'
 
-// interface HomeDataSlice {
-//   data: HomeListFilm[],
-//   urlDomainImage: string,
-//   setHomeData: () => void,
-//   setURL: () => void,
-// }
-export const useTopViewStore = create((set) => ({
+interface TopViewStore {
+  topViewData: HomeListFilm[],
+  setTopViewData: (data: HomeListFilm[]) => void,
+}
+
+export const useTopViewStore = create<TopViewStore>((set) => ({
   topViewData: [],
   setTopViewData: (data: HomeListFilm[]) => set({ topViewData: data }),
 }))

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Categories } from '@/type'
 import { Link } from 'react-router-dom'
 import { cn } from '@/lib/utils'
@@ -8,6 +8,7 @@ interface SubItemSidebarProps {
   mainCategory: string
   data: Categories
 }
+
 const SubItemSidebar = ({ mainCategory, data }: SubItemSidebarProps) => {
   const [itemTab, setItemTab] = useState('')
   const { setIsShowMenu } = useShowMenu()
