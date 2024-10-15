@@ -14,11 +14,11 @@ import 'swiper/css/navigation'
 
 import '@/style.css'
 import { Autoplay, Navigation, Pagination } from 'swiper/modules'
-import { HomeListFilm } from '@/type'
+import { HomeListFilm, ListItemsType } from '@/type'
 import { Link } from 'react-router-dom'
 
 interface SlideFilmProps {
-  data: HomeListFilm[]
+  data: ListItemsType
   isLoading: boolean
 }
 const SlideFilm = ({ data, isLoading }: SlideFilmProps) => {

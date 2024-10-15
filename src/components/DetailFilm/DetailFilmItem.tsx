@@ -11,7 +11,7 @@ import { cn } from '@/lib/utils'
 import { Link } from 'react-router-dom'
 import MovieCollectionItem from '../Home/MovieCollection/MovieCollectionItem'
 import { useGetRelateFilm } from '@/api/detail-film'
-import { HomeListFilm } from '@/type'
+import { Episodes, HomeListFilm, ListItemsType } from '@/type'
 import Skeleton from 'react-loading-skeleton'
 
 interface DetailFilmItemProps {
@@ -71,7 +71,7 @@ const DetailFilmItem = ({ data, isLoading }: DetailFilmItemProps) => {
               </tr>
             </thead>
             <tbody className="hover:bg-[#04090e]">
-              {data?.episodes[0].server_data.map((link, idx) => (
+              {data?.episodes[0].server_data.map((link: Episodes, idx: number) => (
                 <tr key={idx} className="border-[#202b35] border-b-[1px]">
                   <td className="p-[8px] flex items-center gap-2 h-full leading-[56.5px] select-none cursor-pointer group">
                     <Download size={20} className="group-hover:text-[#b83826]" />
@@ -94,7 +94,7 @@ const DetailFilmItem = ({ data, isLoading }: DetailFilmItemProps) => {
       <div className="transition duration-300 mt-3">
         <MovieCollectionItem
           titleMovie="Có thể phù hợp với bạn"
-          data={relateFilm?.data?.items}
+          data={relateFilm?.data?.items as unknown as ListItemsType}
           isNotShowSeeAll={true}
           countImageShow={12}
           isLoading={isRelateFilm}

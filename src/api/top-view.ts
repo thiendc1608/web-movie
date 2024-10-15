@@ -12,7 +12,7 @@ export const useGetTopViewData = (sort_field: string) => {
     data: topViewData,
     isLoading,
     error,
-  } = useQuery({queryKey: [`fetchTopViewData-${sort_field}`], queryFn: () => topViewApi.getTopViewApi(sort_field, 1)});
+  } = useQuery({queryKey: [`fetchTopViewData-${sort_field}`], queryFn: () => topViewApi.getTopViewApi(sort_field, 1),refetchOnWindowFocus: false});
 
   if (error) {
     toast.error(error.toString());

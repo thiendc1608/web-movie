@@ -2,7 +2,7 @@ import SlideFilm from '@/components/Home/SlideFilm/SlideFilm'
 import { Label } from '@/components/ui/label'
 import { Switch } from '@/components/ui/switch'
 import { ListFilm, ListYear, MoviePostTime } from '@/utils/constants'
-import { Categories, HomeListFilm } from '@/type'
+import { Categories, HomeListFilm, ListItemsType } from '@/type'
 import { useAllDataGetApi } from '@/stores/useAllDataGetApi'
 import { Button } from '@/components/ui/button'
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form'
@@ -33,7 +33,7 @@ const FormSchema = z.object({
 })
 
 interface FilterFilmProps {
-  data: HomeListFilm[]
+  data: ListItemsType
   isNotShowSeeAll: boolean
   isLoading: boolean
 }

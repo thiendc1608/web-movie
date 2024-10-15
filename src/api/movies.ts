@@ -16,7 +16,7 @@ export const useGetMovieData = () => {
     data: movieData,
     isLoading,
     error,
-  } = useQuery({queryKey: [`fetchMovieData`, page], queryFn: () => movieApi.getMovieApi(page)});
+  } = useQuery({queryKey: [`fetchMovieData`, page], queryFn: () => movieApi.getMovieApi(page), refetchOnWindowFocus: false});
 
   if (error) {
     toast.error(error.toString());

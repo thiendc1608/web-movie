@@ -15,7 +15,7 @@ const queryString: { page?: string } = useQueryString()
     data: carToonData,
     isLoading,
     error,
-  } = useQuery({queryKey: [`fetchCarToonData`, page], queryFn: () => carToonApi.getCartoonApi(page)});
+  } = useQuery({queryKey: [`fetchCarToonData`, page], queryFn: () => carToonApi.getCartoonApi(page), refetchOnWindowFocus: false});
 
   if (error) {
     toast.error(error.toString());

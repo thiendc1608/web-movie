@@ -1,10 +1,10 @@
 import { axiosClient } from './axios-client'
 import { toast } from 'react-toastify';
 import { useQuery } from '@tanstack/react-query';
-import { HomeListFilm } from '@/type';
+import { ListDataTypes } from '@/type';
 
 export const homeApi = {
-  getHomeApi: () => axiosClient.get<HomeListFilm[]>('/home'),
+  getHomeApi: () => axiosClient.get<ListDataTypes>('/home'),
 }
 
 export const useGetHomeData = () => {
@@ -12,7 +12,7 @@ export const useGetHomeData = () => {
     data: homeData,
     isLoading,
     error,
-  } = useQuery({queryKey: ["fetchHomeData"], queryFn: () => homeApi.getHomeApi()});
+  } = useQuery({queryKey: ["fetchHomeData"], queryFn: () => homeApi.getHomeApi(), refetchOnWindowFocus: false});
 
   if (error) {
     toast.error(error.toString());

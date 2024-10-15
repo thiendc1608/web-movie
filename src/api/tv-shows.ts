@@ -15,7 +15,7 @@ const queryString: { page?: string } = useQueryString()
     data: tvShowsData,
     isLoading,
     error,
-  } = useQuery({queryKey: [`fetchTVShowsData`, page], queryFn: () => tvShowsApi.getTvShowsApi(page)});
+  } = useQuery({queryKey: [`fetchTVShowsData`, page], queryFn: () => tvShowsApi.getTvShowsApi(page), refetchOnWindowFocus: false});
 
   if (error) {
     toast.error(error.toString());

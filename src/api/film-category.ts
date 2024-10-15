@@ -15,7 +15,7 @@ export const useGetFilmCategory = (url:string) => {
     data: filmCategoryData,
     isLoading,
     error,
-  } = useQuery({ queryKey: ['fetchFilmCategory', {url, page}], queryFn: () => filmCategoryApi.getFilmCategory(url, page) })
+  } = useQuery({ queryKey: ['fetchFilmCategory', {url, page}], queryFn: () => filmCategoryApi.getFilmCategory(url, page), refetchOnWindowFocus: false })
 
   if (error) {
     toast.error(error.toString())

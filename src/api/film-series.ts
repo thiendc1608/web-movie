@@ -15,7 +15,7 @@ export const useGetFilmSeries = () => {
     data: filmSeries,
     isLoading,
     error,
-  } = useQuery({ queryKey: ['fetchFilmSeries', page], queryFn: () => filmSeriesApi.getFilmSeries(page) })
+  } = useQuery({ queryKey: ['fetchFilmSeries', page], queryFn: () => filmSeriesApi.getFilmSeries(page), refetchOnWindowFocus: false })
 
   if (error) {
     toast.error(error.toString())

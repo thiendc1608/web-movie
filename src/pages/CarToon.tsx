@@ -29,6 +29,8 @@ const CarToon = () => {
     })
   }, [pageCurrent])
 
+  console.log(carToonData)
+
   return (
     <>
       <FilterFilm isNotShowSeeAll={false} data={homeData?.data?.items} isLoading={isLoading} />

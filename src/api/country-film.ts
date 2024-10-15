@@ -15,7 +15,7 @@ export const useGetCountryFilm = (url:string) => {
     data: countryFilmData,
     isLoading,
     error,
-  } = useQuery({ queryKey: ['fetchCountryFilmData', {url, page}], queryFn: () => countryFilmApi.getCountryFilm(url, page) })
+  } = useQuery({ queryKey: ['fetchCountryFilmData', {url, page}], queryFn: () => countryFilmApi.getCountryFilm(url, page), refetchOnWindowFocus: false })
 
   if (error) {
     toast.error(error.toString())

@@ -1,13 +1,13 @@
-import React from 'react'
-import { HomeListFilm } from '@/type'
+import { ListDataTypes } from '@/type'
 import TitleMovie from '../TitleMovie'
 import PhimHotItem from './PhimHotItem'
 
 interface PhimHotProps {
   titleMovie: string
-  data: HomeListFilm[]
+  data: ListDataTypes
   isLoading: boolean
 }
+
 const PhimHot = ({ titleMovie, data, isLoading }: PhimHotProps) => {
   return (
     <div className="custom-page pb-[3%] bg-[#151d25]">

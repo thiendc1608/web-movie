@@ -12,7 +12,7 @@ export const useGetCountry = () => {
     data: countryData,
     isLoading,
     error,
-  } = useQuery({queryKey: ["fetchCountryData"], queryFn: () => countryApi.getCountry()});
+  } = useQuery({queryKey: ["fetchCountryData"], queryFn: () => countryApi.getCountry(), refetchOnWindowFocus: false});
 
   if (error) {
     toast.error(error.toString());

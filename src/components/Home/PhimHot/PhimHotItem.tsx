@@ -7,15 +7,14 @@ import '@/style.css'
 // import required modules
 import { Navigation } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { HomeListFilm } from '@/type'
+import { HomeListFilm, ListDataTypes } from '@/type'
 import '@/components/Home/SlideFilm/SlideFilm.css'
 import FilmItem from '@/components/FilmItem'
 import '@/components/Home/MovieCollection/MovieCollection.css'
 import FilmItemSkeleton from '@/components/Skeleton/FilmItemSkeleton'
-import Skeleton from 'react-loading-skeleton'
 
 interface PhimHotItemProps {
-  data: HomeListFilm[]
+  data: ListDataTypes
   isLoading: boolean
 }
 const PhimHotItem = ({ data, isLoading }: PhimHotItemProps) => {
@@ -59,7 +58,7 @@ const PhimHotItem = ({ data, isLoading }: PhimHotItemProps) => {
         className="swiper-autoheight mySwiper"
         loop={true}
       >
-        {data?.map((item: HomeListFilm) => (
+        {data?.items?.map((item: HomeListFilm) => (
           <SwiperSlide key={item._id}>
             <FilmItem item={item} isNotShowSeeAll={true} />
           </SwiperSlide>

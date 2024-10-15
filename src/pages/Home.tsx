@@ -20,7 +20,7 @@ const Home = () => {
     <>
       <div className="z-1">
         <FilterFilm isNotShowSeeAll={true} data={homeData?.data?.items} isLoading={isLoading} />
-        <PhimHot titleMovie="Phim Hot" data={homeData?.data?.items} isLoading={isLoading} />
+        {homeData?.data && <PhimHot titleMovie="Phim Hot" data={homeData.data} isLoading={isLoading} />}
         <MovieCollection />
       </div>
     </>

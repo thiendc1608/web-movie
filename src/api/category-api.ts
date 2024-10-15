@@ -12,7 +12,7 @@ export const useGetCategory = () => {
     data: categoryData,
     isLoading,
     error,
-  } = useQuery({queryKey: ["fetchCategoryData"], queryFn: () => categoryApi.getCategory()});
+  } = useQuery({queryKey: ["fetchCategoryData"], queryFn: () => categoryApi.getCategory(), refetchOnWindowFocus: false});
 
   if (error) {
     toast.error(error.toString());

@@ -1,4 +1,3 @@
-import React from 'react'
 import MovieCollectionItem from './MovieCollectionItem'
 import TopView from '../TopView/TopView'
 import { useGetFilmSeries } from '@/api/film-series'
@@ -11,6 +10,7 @@ const MovieCollection = () => {
   const { movieData, isLoading: isMovieData } = useGetMovieData()
   const { tvShowsData, isLoading: isTVShowsData } = useGetTVShowsData()
   const { carToonData, isLoading: isCarToonData } = useGetCarToonData()
+  console.log(filmSeries)
 
   return (
     <div className="custom-page pb-[3%] bg-[#151d25]">
@@ -18,27 +18,31 @@ const MovieCollection = () => {
         <div className="lg:w-3/4">
           <MovieCollectionItem
             titleMovie="Phim Bộ"
-            data={filmSeries?.data?.items}
+            data={filmSeries?.data}
             countImageShow={12}
             isLoading={isFilmSeriesLoading}
+            isNotShowSeeAll={true}
           />
           <MovieCollectionItem
             titleMovie="Phim Lẻ"
-            data={movieData?.data?.items}
+            data={movieData?.data}
             countImageShow={12}
             isLoading={isMovieData}
+            isNotShowSeeAll={true}
           />
           <MovieCollectionItem
             titleMovie="TV SHOWS"
-            data={tvShowsData?.data?.items}
+            data={tvShowsData?.data}
             countImageShow={12}
             isLoading={isTVShowsData}
+            isNotShowSeeAll={true}
           />
           <MovieCollectionItem
             titleMovie="Hoạt hình"
-            data={carToonData?.data?.items}
+            data={carToonData?.data}
             countImageShow={12}
             isLoading={isCarToonData}
+            isNotShowSeeAll={true}
           />
         </div>
         <div className="w-full lg:w-1/3">

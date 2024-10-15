@@ -34,7 +34,7 @@ export type voteFilm = {
 export interface HomeListFilm {
   category: Categories
   content: string
-  country: string
+  country: CategoryAndCountry[]
   actor: string[]
   director: string[]
   episode_current: string
@@ -42,7 +42,7 @@ export interface HomeListFilm {
   episodes: {
     server_name: string
     server_data: Episodes[]
-  }
+  }[]
   lang: string
   name: string
   origin_name: string
@@ -53,11 +53,38 @@ export interface HomeListFilm {
   time: string
   slug: string
   trailer_url: string
-  view: string
+  view?: string
   year: string
   _id: string
   tmdb: voteFilm[]
   type: string
+}
+
+export type ParamsTypes = {
+  itemsUpdateInDay:number,
+  pagination: {
+    currentPage: number,
+    pageRanges: number,
+    totalItems: number,
+    totalItemsPerPage: number
+  }
+}
+
+export type SEOOnPage = {
+  descriptionHead: string,
+  og_image: string[],
+  og_type: string,
+  titleHead: string,
+}
+
+export type ListDataTypes = {
+  APP_DOMAIN_CDN_IMAGE: string,
+  APP_DOMAIN_FRONTEND: string,
+  breadCrumb: Breadcrumb[],
+  items: HomeListFilm[],
+  params: ParamsTypes,
+  seoOnPage: SEOOnPage,
+  type_list: string
 }
 
 export type FormData = {
