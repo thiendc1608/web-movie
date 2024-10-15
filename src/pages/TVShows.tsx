@@ -54,12 +54,14 @@ const TVShows = () => {
             <TopView countImageShow={10} />
           </div>
         </div>
-        <Pagination
-          totalCount={+tvShowsData?.data.params.pagination.totalItems || 1}
-          currentPage={pageCurrent}
-          setPageCurrent={setPageCurrent}
-          pageSize={+tvShowsData?.data.params.pagination.totalItemsPerPage || 1}
-        />
+        {tvShowsData?.data && (
+          <Pagination
+            totalCount={+tvShowsData?.data.params.pagination.totalItems || 1}
+            currentPage={pageCurrent}
+            setPageCurrent={setPageCurrent}
+            pageSize={+tvShowsData?.data.params.pagination.totalItemsPerPage || 1}
+          />
+        )}
       </div>
     </>
   )

@@ -31,7 +31,6 @@ const Login = () => {
       setIsShowModal(false, null)
       setIsLogin(true)
       setUser(user?.user.displayName)
-      setToken(user?.user.accessToken)
     }
   }
 
