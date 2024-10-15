@@ -1,0 +1,47 @@
+.animate-bookmarkshake {
+    animation: bookmarkshake 1s ease-in-out infinite;
+}
+
+.cardInfo-trailer {
+    background-image: linear-gradient(to right, #25aae1, #024fd6, #04befe, #3f86ed);
+    background-size: 300% 100%;
+    box-shadow: 0 4px 15px #4184eabf;
+}
+
+.button-one {
+    background-image: linear-gradient(to right, #009245, #d0c200, #00a8c5, #d9e021);
+    box-shadow: 0 4px 15px #53b039bf;
+    background-size: 300% 100%;
+}
+
+.button-two {
+    background-image: linear-gradient(to right, #fb0, #e43603, #ff6290, #ff5000);
+    box-shadow: 0 4px 15px #e5420abf;
+    background-size: 300% 100%;
+}
+
+.tw-flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sectionTitle-custom {
+    background: linear-gradient(to right, #ff8a00, #ff2070);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 13px 0;
+    line-height: 11px;
+    -o-border-image: linear-gradient(to right, rgb(255, 138, 0), rgb(255, 32, 112));
+    border-image: linear-gradient(to right, #ff8a00, #ff2070);
+    border-image-slice: 1;
+}
+
+@keyframes bookmarkshake {
+    0%, 20%, 50%, 80%, 100% {
+        transform: rotate(0);
+    }
+}

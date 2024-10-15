@@ -1,0 +1,18 @@
+.search-container {
+    position: relative;
+}
+
+.search-container ul {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #222;
+    border-radius: 4px;
+    list-style: none;
+    padding: 0;
+    margin-top: 5px;
+    z-index: 10;
+    box-shadow: 0 2px 4px #0000001a;
+    overflow-y: auto;
+}

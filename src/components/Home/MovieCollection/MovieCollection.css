@@ -1,0 +1,63 @@
+.cardItemQualang {
+    top: 3px;
+    left: 3px;
+    z-index: 1;
+    background-image: linear-gradient(to right, #f0c, #339 51%, #f0c);
+    background-size: 300% 100%;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 8px;
+    border-top-left-radius: 8px;
+    transition: .7s;
+    padding: 3px 6px;
+    position: absolute;
+    color: #fff;
+    text-align: center;
+    line-height: 1.6;
+    font-size: 11px;
+}
+
+.cardItemQualangMiniSlider {
+    top: 3px;
+    left: 4px;
+    background: #365979;
+    z-index: 1;
+    background-image: linear-gradient(to right, #568db9, #002b50 51%, #145e9e);
+    background-size: 200% 100%;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 8px;
+    border-top-left-radius: 8px;
+    transition: .7s;
+    padding: 3px 6px;
+    position: absolute;
+    color: #fff;
+    text-align: center;
+    line-height: 1.6;
+    font-size: 11px;
+}
+
+.addOn-custom {
+    position: absolute;
+    right: 2px;
+    bottom: 3px;
+    background: #478413;
+    color: #fff;
+    padding: 3px 5px 1px;
+    z-index: 9;
+    background-image: linear-gradient(to right, #c02425, #f0cb35 51%, #c02425);
+    background-size: 200% 100%;
+    transition: .7s;
+    text-transform: capitalize;
+    text-align: center;
+    font-size: 11px;
+    border-radius: 2px;
+    line-height: 17.6px;
+}
+
+.swiper-autoheight, .swiper-autoheight .swiper-slide {
+    height: auto
+}
+
+.swiper-autoheight .swiper-wrapper {
+    align-items: flex-start;
+    transition-property: transform,height
+}

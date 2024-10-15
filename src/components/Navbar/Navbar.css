@@ -1,0 +1,37 @@
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    width: 300px;
+    height: 100vh;
+    background-color: #12171b;
+    z-index: 1000;
+    transition: left 0.5s ease;
+    box-shadow: #161d23 0 5px 10px -1px;
+}
+
+.sidebar.close {
+    left: 0;
+}
+
+.sidebar .logo {
+    display: flex;
+    align-items: center;
+    padding: 7px;
+}
+
+.sidebar .logo-text {
+    font-size: 25px;
+    font-weight: 700;
+    color: #fff;
+    white-space: nowrap;
+}
+
+.sidebar .logo-text .text-primary {
+    color: #1890ff;
+}
+
+.sidebar .x-button {
+    background: linear-gradient(90deg, #0866aa 5%, #aa5708 56%, #aa8d08 100%, #0866aa, #191612);
+    box-shadow: 0 4px 8px #0006;
+}
