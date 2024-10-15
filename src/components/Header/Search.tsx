@@ -3,13 +3,19 @@ import { useEffect, useState, useTransition } from 'react'
 import { IoIosSearch } from 'react-icons/io'
 import '@/components/SearchFilm/SearchFilm.css'
 import { searchFilmApi } from '@/api/search-film'
-import { HomeDataInfo } from '@/type'
+import { HomeListFilm } from '@/type'
 import InfoSearch from '../SearchFilm/InfoSearch'
 
+interface HomeListFilmResponse {
+  data: {
+    items: HomeListFilm[]
+  }
+}
+
 const Search = () => {
-  const [isPending, startTransition] = useTransition()
+  const [, startTransition] = useTransition()
   const [query, setQuery] = useState('')
-  const [searchResults, setSearchResults] = useState<HomeDataInfo>()
+  const [searchResults, setSearchResults] = useState<HomeListFilmResponse[]>()
   const searchQuery = useDebounce(query, 1000)
   const [isShowResult, setIsShowResult] = useState(false)
 
@@ -20,10 +26,10 @@ const Search = () => {
         searchFilmApi
           .getSearchFilmApi(query, 1)
           .then((response) => {
-            setSearchResults(response)
+            setSearchResults(response.data)
           })
           .catch((err) => {
-            console.log(err) //I know this is nothign but im running out of time tbh
+            console.log(err)
           })
       })
     }
@@ -47,7 +53,7 @@ const Search = () => {
         <IoIosSearch size={26} color="#ff8a00" />
       </button>
       <InfoSearch
-        data={searchResults?.data.items}
+        data={searchResults?.[0]?.data?.items}
         query={query}
         isShowResult={isShowResult}
         setIsShowResult={setIsShowResult}

@@ -1,10 +1,10 @@
-import { HomeDataInfo } from '@/type'
+import { HomeListFilm } from '@/type'
 import { axiosClient } from './axios-client'
 import { useQuery } from '@tanstack/react-query';
 import { toast } from 'react-toastify';
 
 export const topViewApi = {
-  getTopViewApi: (sort_field: string, page: number) => axiosClient.get<HomeDataInfo>('/danh-sach/phim-moi', { params: { sort_field, page } }),
+  getTopViewApi: (sort_field: string, page: number) => axiosClient.get<HomeListFilm[]>('/danh-sach/phim-moi', { params: { sort_field, page } }),
 }
 
 export const useGetTopViewData = (sort_field: string) => {

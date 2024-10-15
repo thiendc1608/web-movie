@@ -9,8 +9,8 @@ interface TopViewItemProps {
   data: HomeListFilm[]
 }
 const TopViewItem = ({ countImageShow, data }: TopViewItemProps) => {
-  let dataStored = JSON.parse(localStorage.getItem('urlDomain'))
-  const urlDomainImage = dataStored.state.urlDomainImage
+  const dataStored = localStorage.getItem('urlDomain')
+  const urlDomainImage = dataStored ? JSON.parse(dataStored).state.urlDomainImage : ''
 
   return (
     <>

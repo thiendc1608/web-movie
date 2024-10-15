@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { HomeListFilm } from '@/type'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { CirclePlay, ChevronDown, Play, X, Heart } from 'lucide-react'
@@ -12,10 +12,13 @@ interface ShowImageFilmProps {
   isLoading: boolean
 }
 const ShowImageFilm = ({ data, isLoading }: ShowImageFilmProps) => {
-  let dataStored = JSON.parse(localStorage.getItem('urlDomain'))
-  const urlDomainImage = dataStored.state.urlDomainImage
+  const dataStored = localStorage.getItem('urlDomain')
+  const urlDomainImage = dataStored ? JSON.parse(dataStored).state.urlDomainImage : ''
   const [isClickTrailer, setIsClickTrailer] = useState(false)
-  const { isShowEpisodes, setIsShowEpisodes } = useShowEpisodes()
+  const { isShowEpisodes, setIsShowEpisodes } = useShowEpisodes() as {
+    isShowEpisodes: boolean
+    setIsShowEpisodes: (value: boolean) => void
+  }
   const navigate = useNavigate()
 
   if (isLoading) {
@@ -37,7 +40,7 @@ const ShowImageFilm = ({ data, isLoading }: ShowImageFilmProps) => {
           alt={`${data?.name}`}
           className="rounded-lg h-full w-full"
         />
-        <div className="mt-4 absolute text-black left-1.5 -top-2 left-2 animate-bookmarkshake">
+        <div className="mt-4 absolute text-black -top-2 left-2 animate-bookmarkshake">
           <button>
             <Heart color="red" size={30} />
           </button>

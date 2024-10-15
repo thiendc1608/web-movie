@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { HomeListFilm } from '@/type'
-import { useHomeStore } from '@/stores/useHomeStore'
 import '@/components/Home/MovieCollection/MovieCollection.css'
 import { cn } from '@/lib/utils'
 
@@ -11,8 +10,8 @@ interface FilmItemProps {
 }
 
 const FilmItem = ({ item, isNotShowSeeAll }: FilmItemProps) => {
-  let dataStored = JSON.parse(localStorage.getItem('urlDomain'))
-  const urlDomainImage = dataStored.state.urlDomainImage
+  const dataStored = localStorage.getItem('urlDomain')
+  const urlDomainImage = dataStored ? JSON.parse(dataStored).state.urlDomainImage : ''
 
   return (
     <div className="h-[325px] card-custom flex flex-col bg-[#202a34] group">

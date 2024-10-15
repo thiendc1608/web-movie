@@ -1,11 +1,11 @@
-import { HomeDataInfo, HomeListFilm } from '@/type'
+import { HomeListFilm } from '@/type'
 import { axiosClient } from './axios-client'
 import { toast } from 'react-toastify';
 import { useQuery } from '@tanstack/react-query';
 import { useQueryString } from '@/utils/utils';
 
 export const detailFilmApi = {
-  getDetailFilmApi: (url:string) => axiosClient.get<HomeDataInfo>('/phim/' + url),
+  getDetailFilmApi: (url:string) => axiosClient.get<HomeListFilm[]>('/phim/' + url),
 }
 
 export const useGetDetailFilm = (url:string) => {

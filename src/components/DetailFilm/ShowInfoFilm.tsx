@@ -1,4 +1,3 @@
-import React from 'react'
 import { CalendarDays, Clock, Vote } from 'lucide-react'
 import { HomeListFilm } from '@/type'
 import Skeleton from 'react-loading-skeleton'

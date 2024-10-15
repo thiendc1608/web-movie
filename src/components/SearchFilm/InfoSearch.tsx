@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from 'react'
-import { HomeDataInfo } from '@/type'
+import React, { useEffect } from 'react'
+import { HomeListFilm } from '@/type'
 import TopViewItem from '../Home/TopView/TopViewItem'
 
 interface InfoSearchProps {
-  data: HomeDataInfo
+  data: HomeListFilm[]
   query: string
   isShowResult: boolean
   setIsShowResult: React.Dispatch<React.SetStateAction<boolean>>
 }
 const InfoSearch = ({ data, query, isShowResult, setIsShowResult }: InfoSearchProps) => {
   useEffect(() => {
-    const handleClickOutOptions = (e) => {
+    const handleClickOutOptions = (e: Event) => {
       const displayResultSearch = document.getElementById('display-result-search')
-      if (!displayResultSearch?.contains(e.target)) setIsShowResult(false)
+      if (e.target instanceof Node && !displayResultSearch?.contains(e.target)) setIsShowResult(false)
     }
     document.addEventListener('click', handleClickOutOptions)
     return () => {

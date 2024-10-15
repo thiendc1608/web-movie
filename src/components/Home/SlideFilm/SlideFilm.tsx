@@ -14,17 +14,16 @@ import 'swiper/css/navigation'
 
 import '@/style.css'
 import { Autoplay, Navigation, Pagination } from 'swiper/modules'
-import { HomeDataInfo, HomeListFilm } from '@/type'
+import { HomeListFilm } from '@/type'
 import { Link } from 'react-router-dom'
-import { useHomeStore } from '@/stores/useHomeStore'
 
 interface SlideFilmProps {
-  data: HomeDataInfo
+  data: HomeListFilm[]
   isLoading: boolean
 }
 const SlideFilm = ({ data, isLoading }: SlideFilmProps) => {
-  let dataStored = JSON.parse(localStorage.getItem('urlDomain'))
-  const urlDomainImage = dataStored.state.urlDomainImage
+  const dataStored = localStorage.getItem('urlDomain')
+  const urlDomainImage = dataStored ? JSON.parse(dataStored).state.urlDomainImage : ''
   const [isHoverImage, setIsHoverImage] = React.useState(false)
   const [isHoverPlay, setIsHoverPlay] = React.useState(false)
 

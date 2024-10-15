@@ -23,8 +23,8 @@ const WatchFilm = () => {
   const { detailFilm, isLoading: isDetailFilm } = useGetDetailFilm(filmName ?? '')
   const category = detailFilm?.data.item.category[detailFilm?.data.item.category.length - 1].slug
   const { relateFilm } = useGetRelateFilm(detailFilm?.data.item.slug, category)
-  let dataStored = JSON.parse(localStorage.getItem('urlDomain'))
-  const urlDomainImage = dataStored.state.urlDomainImage
+  const dataStored = localStorage.getItem('urlDomain')
+  const urlDomainImage = dataStored ? JSON.parse(dataStored).state.urlDomainImage : ''
 
   return (
     <div>

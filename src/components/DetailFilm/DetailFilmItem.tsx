@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useState } from 'react'
 import 'react-lazy-load-image-component/src/effects/blur.css'
 import './DetailFilm.css'
 import ShowInfoFilm from './ShowInfoFilm'
@@ -20,7 +20,7 @@ interface DetailFilmItemProps {
 }
 
 const DetailFilmItem = ({ data, isLoading }: DetailFilmItemProps) => {
-  const { isShowEpisodes } = useShowEpisodes()
+  const { isShowEpisodes } = useShowEpisodes() as { isShowEpisodes: boolean }
   const [isExpand, setIsExpand] = useState(false)
   const category = data ? data.category[data.category.length - 1].slug : ''
   const { relateFilm, isLoading: isRelateFilm } = useGetRelateFilm(data?.slug, category)
@@ -75,9 +75,11 @@ const DetailFilmItem = ({ data, isLoading }: DetailFilmItemProps) => {
                 <tr key={idx} className="border-[#202b35] border-b-[1px]">
                   <td className="p-[8px] flex items-center gap-2 h-full leading-[56.5px] select-none cursor-pointer group">
                     <Download size={20} className="group-hover:text-[#b83826]" />
-                    <Link to={link.link_m3u8 || null} className="text-[#87c3f9] text-[16px] group-hover:text-[#b83826]">
-                      {link.filename || 'Không có link nào được liên kết'}
-                    </Link>
+                    {link.link_m3u8 && (
+                      <Link to={link.link_m3u8} className="text-[#87c3f9] text-[16px] group-hover:text-[#b83826]">
+                        {link.filename || 'Không có link nào được liên kết'}
+                      </Link>
+                    )}
                   </td>
                   <td className="p-[8px]">
                     <span className="p-1 bg-[#0e1215] rounded-sm text-white border-[1px] border-[#1e2732]">1080p</span>
@@ -92,7 +94,7 @@ const DetailFilmItem = ({ data, isLoading }: DetailFilmItemProps) => {
       <div className="transition duration-300 mt-3">
         <MovieCollectionItem
           titleMovie="Có thể phù hợp với bạn"
-          data={relateFilm?.data.items}
+          data={relateFilm?.data?.items}
           isNotShowSeeAll={true}
           countImageShow={12}
           isLoading={isRelateFilm}

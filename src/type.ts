@@ -63,10 +63,6 @@ export interface HomeListFilm {
   type: string
 }
 
-export type HomeDataInfo = {
-  items: HomeListFilm[]
-}
-
 export type FormData = {
     email: string
     password: string;

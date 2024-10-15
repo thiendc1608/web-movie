@@ -2,15 +2,15 @@ import { cn } from '@/lib/utils'
 import { useShowEpisodes } from '@/stores/useShowEpisodes'
 import { HomeListFilm } from '@/type'
 import { Logs } from 'lucide-react'
-import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 interface ShowEpisodesProps {
   data: HomeListFilm
 }
 const ShowEpisodes = ({ data }: ShowEpisodesProps) => {
-  const episodesTotal = Array.from({ length: data?.episode_total.match(/\d+/) }, (_, i) => i + 1)
-  const { episodes, setEpisodes } = useShowEpisodes()
+  const episodeTotalMatch = data?.episode_total.match(/\d+/)
+  const episodesTotal = Array.from({ length: episodeTotalMatch ? Number(episodeTotalMatch[0]) : 0 }, (_, i) => i + 1)
+  const { episodes, setEpisodes } = useShowEpisodes() as { episodes: number; setEpisodes: (data: number) => void }
   const navigate = useNavigate()
 
   return (

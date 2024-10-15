@@ -1,9 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react'
 import SlideFilm from '@/components/Home/SlideFilm/SlideFilm'
 import { Label } from '@/components/ui/label'
 import { Switch } from '@/components/ui/switch'
 import { ListFilm, ListYear, MoviePostTime } from '@/utils/constants'
-import { Categories, HomeDataInfo } from '@/type'
+import { Categories, HomeListFilm } from '@/type'
 import { useAllDataGetApi } from '@/stores/useAllDataGetApi'
 import { Button } from '@/components/ui/button'
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form'
@@ -34,16 +33,26 @@ const FormSchema = z.object({
 })
 
 interface FilterFilmProps {
-  data: HomeDataInfo
+  data: HomeListFilm[]
   isNotShowSeeAll: boolean
   isLoading: boolean
+}
+
+interface FilterStatus {
+  isCheckFilter: boolean
+  setIsCheckFilter: (data: boolean) => void
+  setTimePost: (data: string) => void
+  setListMovie: (data: string) => void
+  setListCategory: (data: string) => void
+  setListCountry: (data: string) => void
+  setListYear: (data: string) => void
 }
 
 const FilterFilm = ({ data, isNotShowSeeAll, isLoading }: FilterFilmProps) => {
   const navigate = useNavigate()
 
   const { isCheckFilter, setIsCheckFilter, setTimePost, setListMovie, setListCategory, setListCountry, setListYear } =
-    useFilterStatus()
+    useFilterStatus<FilterStatus>()
   const { dataCategory, dataCountry } = useAllDataGetApi()
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
