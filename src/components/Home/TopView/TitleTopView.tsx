@@ -2,11 +2,12 @@ import { useEffect, useState } from 'react'
 import '@/components/Home/TopView/TopView.css'
 import { cn } from '@/lib/utils'
 import { useGetTopViewData } from '@/api/top-view'
-import { useTopViewStore } from '@/stores/useTopViewStore'
 import Skeleton from 'react-loading-skeleton'
+import { ListDataTypes } from '@/type'
 
 interface TitleMovieProps {
   titleMovie: string
+  setTopViewData: (data: ListDataTypes) => void
 }
 
 const stringTime: {
@@ -27,12 +28,11 @@ const stringTime: {
   },
 ]
 
-const TitleTopView = ({ titleMovie }: TitleMovieProps) => {
+const TitleTopView = ({ titleMovie, setTopViewData }: TitleMovieProps) => {
   const [activeTab, setActiveTab] = useState(1)
   const { topViewData: dayData, isLoading } = useGetTopViewData('_id')
   const { topViewData: weekData } = useGetTopViewData('modified.time')
   const { topViewData: monthData } = useGetTopViewData('year')
-  const { setTopViewData } = useTopViewStore()
   useEffect(() => {
     if (activeTab === 1 && dayData?.data) setTopViewData(dayData?.data)
     if (activeTab === 2 && weekData?.data) setTopViewData(weekData?.data)
